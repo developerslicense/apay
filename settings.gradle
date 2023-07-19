@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        // эта строчка для локального теста либы при локальном подключении
+        // maven { url '/Users/mikhail.belikov/AndroidStudioProjects/airba_pay_sdk/build/host/outputs/repo' }
+
+        // эта строчка для генерации либы для мавена
+        maven { url = 'repo'} //todo добавь в доку, что это для сборки, а выше для локального теста
+
+        maven { url 'https://storage.googleapis.com/download.flutter.io' }
+    }
+}
+rootProject.name = "AirbaPaySdkAndroid"
+include ':airbapaysdk'
