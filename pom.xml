@@ -3,14 +3,14 @@
     xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>kz.airbapay</groupId>
-    <artifactId>airbapaysdkandroid</artifactId>
+    <groupId>io.github.developerslicense</groupId>
+    <artifactId>apay</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>airbapaysdkandroid</name>
     <description>AirbaPay sdk for android</description>
-    <url>https://airbapay.kz</url>
+    <url>https://github.com/developerslicense/apay/</url>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
