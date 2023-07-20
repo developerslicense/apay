@@ -27,9 +27,9 @@
     </developers>
     <scm>
         <connection>scm:git:git://github.com/developerslicense/apay.git</connection>
-        <developerConnection>scm:git:ssh://github.com:developerslicense/apay.git
-        </developerConnection>
-        <url>http://github.com/developerslicense/apay/tree/master</url>
+        <developerConnection>scm:git:ssh://github.com:developerslicense/apay.git</developerConnection>
+        <url>http://github.com/developerslicense/apay.git</url>
+
     </scm>
 
     <distributionManagement>
