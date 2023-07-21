@@ -1,5 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 plugins {
     id 'com.android.application' version '8.0.2' apply false
     id 'com.android.library' version '8.0.2' apply false
@@ -10,8 +9,9 @@ plugins {
     id 'signing' // is needed for signing your files
 }
 
+
 group 'kz.airbapay' // this is your groupId
-version '0.0.4' // this is your version
+version '0.0.2' // this is your version
 
 ext { // this are variables
     pomGroupId = group
@@ -40,6 +40,9 @@ targetCompatibility = "${jdkCompileVersion}"
 java {
     withJavadocJar()
     withSourcesJar()
+    artifacts {
+        archives file("/Users/mikhail.belikov/AndroidStudioProjects/apayAndroid/build/outputs/aar/airbapaysdkandroid-release.aar")
+    }
     toolchain {
         languageVersion.set(JavaLanguageVersion.of("${jdkCompileVersion}"))
     }
@@ -58,7 +61,16 @@ publishing {
             groupId = "${pomGroupId}"
             artifactId = "${pomArtifactId}"
             version = "${pomVersion}"
+
+            /*artifact("/Users/mikhail.belikov/AndroidStudioProjects/apayAndroid/build/outputs/aar/airbapaysdkandroid-release.aar") {
+                extension 'aar'
+            }*/
+
             from components.java
+
+
+//            artifact("$buildDir/outputs/aar/airbapaysdk-release.aar")
+//            artifact("$buildDir/outputs/aar/airbapaysdk-debug.aar")
 
             pom {
                 name = "${pomArtifactName}"
@@ -93,7 +105,7 @@ publishing {
             url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/" // this is deploys to the stating repo in nexus
             credentials {
                 username = "developers.license@technodom.kz"
-                password = "" // При выполнении gradle publish вставь сюда пароль
+                password = "hjv_abz1ewk0CPD@pvh" // При выполнении gradle publish вставь сюда пароль
             }
         }
     }
