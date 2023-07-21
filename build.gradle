@@ -11,7 +11,7 @@ plugins {
 
 
 group 'kz.airbapay' // this is your groupId
-version '0.0.2' // this is your version
+version '0.0.3' // this is your version
 
 ext { // this are variables
     pomGroupId = group
@@ -48,6 +48,9 @@ java {
     }
 }
 
+def Properties properties = new Properties()
+properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
 javadoc {
     if (JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption('html5', true)
@@ -62,15 +65,7 @@ publishing {
             artifactId = "${pomArtifactId}"
             version = "${pomVersion}"
 
-            /*artifact("/Users/mikhail.belikov/AndroidStudioProjects/apayAndroid/build/outputs/aar/airbapaysdkandroid-release.aar") {
-                extension 'aar'
-            }*/
-
             from components.java
-
-
-//            artifact("$buildDir/outputs/aar/airbapaysdk-release.aar")
-//            artifact("$buildDir/outputs/aar/airbapaysdk-debug.aar")
 
             pom {
                 name = "${pomArtifactName}"
@@ -105,7 +100,7 @@ publishing {
             url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/" // this is deploys to the stating repo in nexus
             credentials {
                 username = "developers.license@technodom.kz"
-                password = "hjv_abz1ewk0CPD@pvh" // При выполнении gradle publish вставь сюда пароль
+                password = properties.osshrPass
             }
         }
     }
