@@ -19,6 +19,6 @@ dependencyResolutionManagement {
         maven { url 'https://storage.googleapis.com/download.flutter.io' }
     }
 }
-rootProject.name = "AirbaPaySdkAndroid"
+rootProject.name = "airbapaysdkandroid"
 include ':app'
 include ':airbapaysdkandroid'
