@@ -5,8 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.plugin.common.MethodChannel
+//import io.flutter.embedding.android.FlutterActivity
+//import io.flutter.plugin.common.MethodChannel
 import java.lang.StringBuilder
 
 class AirbaPay {
@@ -101,7 +101,7 @@ class AirbaPay {
     }
 }
 
-class AirbaPayActivity : FlutterActivity() {
+class AirbaPayActivity : Activity()/*FlutterActivity()*/ {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,9 +109,9 @@ class AirbaPayActivity : FlutterActivity() {
         val arguments = intent.getStringExtra("airba_pay_args")
         Log.i("Arguments for AirbaPay", arguments.orEmpty())
 
-        val testChannel =
-            MethodChannel(flutterEngine!!.dartExecutor.binaryMessenger, "airba_pay_channel")
-        testChannel.invokeMethod("airba_pay_arguments", arguments)
+//        val testChannel =
+//            MethodChannel(flutterEngine!!.dartExecutor.binaryMessenger, "airba_pay_channel")
+//        testChannel.invokeMethod("airba_pay_arguments", arguments)
 
     }
 }

@@ -44,14 +44,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    debugImplementation 'kz.airbapay.mobilesdk.airba_pay_sdk:flutter_debug:1.0'
-    releaseImplementation 'kz.airbapay.mobilesdk.airba_pay_sdk:flutter_release:1.0'
+//    debugImplementation 'kz.airbapay.mobilesdk.airba_pay_sdk:flutter_debug:1.0'
+//    releaseImplementation 'kz.airbapay.mobilesdk.airba_pay_sdk:flutter_release:1.0'
 
 }
 
 
 group 'kz.airbapay' // this is your groupId
-version '0.0.9' // this is your version
+version '0.0.10' // this is your version
 
 ext { // this are variables
     pomGroupId = group
