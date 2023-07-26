@@ -1,0 +1,4 @@
+enum BanksName {
+  halyk,
+  kaspi
+}
