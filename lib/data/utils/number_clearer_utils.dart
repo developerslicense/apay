@@ -75,11 +75,11 @@ String _clearNumberMaxSymbols(String amountLocaleCleaned, bool isUserEntered, {i
   if (needClearMax && amountSplited[0].length > maxSize) {
     return amountSplited[0].substring(0, maxSize);
 
-  } else if (amountSplited.length > 1) {
-    return _clearDecimalMaxSymbols(amountSplited);
-
   } else if (isUserEntered && amountSplited.length > 1) {
     return '${amountSplited[0]}.${amountSplited[1]}';
+
+  } else if (amountSplited.length > 1) {
+    return _clearDecimalMaxSymbols(amountSplited);
 
   } else {
     return amountSplited[0];
