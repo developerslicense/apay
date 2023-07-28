@@ -52,7 +52,7 @@ String _clearNumberForLocale(
 
   if (comas.length > 2) {
     try {
-      amountLocaleCleaned = '${comas[0]}.${comas[1] != '' ? comas[1] : comas[2]}';
+      amountLocaleCleaned = '${comas[0]}.${comas[1] == '' ? comas[2] : comas[1]}';
     } catch (e, m) {
       developer.log('clearNumberForLocale error: $e; $m');
     }
