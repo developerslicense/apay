@@ -1,4 +1,5 @@
-import 'package:apay/data/utils/base_strings.dart';
+import 'package:apay/airba_pay_sdk.dart';
+import 'package:apay/data/constants/strings.dart';
 import 'package:apay/data/utils/number_clearer_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -25,19 +26,19 @@ void testsGetNumberClearedWithMaxSize() {
     expect(_testGetNumberCleared('100000&*()^', isUserEntered: true), '100000');
     expect(_testGetNumberCleared('1000&*()^00', isUserEntered: true), '100000');
 
-    expect(_testGetNumberCleared(' 1 234 567 890 ${StringsBase.kzt}', isUserEntered: true), '1234567890');
-    expect(_testGetNumberCleared(' 1 234 567 890 ${StringsBase.kzt}', isUserEntered: false), '1234567890');
+    expect(_testGetNumberCleared(' 1 234 567 890 ${kzt}', isUserEntered: true), '1234567890');
+    expect(_testGetNumberCleared(' 1 234 567 890 ${kzt}', isUserEntered: false), '1234567890');
 
-    _testWithLang(StringsBase.kz);
-    _testWithLang(StringsBase.ru);
-    _testWithLang(StringsBase.en);
+    _testWithLang(AirbaPaySdkLang.kz.lang);
+    _testWithLang(AirbaPaySdkLang.ru.lang);
+    _testWithLang('en');
 
-    _testWithMinus(StringsBase.ru);
-    _testWithMinus(StringsBase.kz);
-    _testWithMinus(StringsBase.en);
+    _testWithMinus(AirbaPaySdkLang.ru.lang);
+    _testWithMinus(AirbaPaySdkLang.kz.lang);
+    _testWithMinus('en');
 
-    _testCyrillic(StringsBase.kz);
-    _testCyrillic(StringsBase.ru);
+    _testCyrillic(AirbaPaySdkLang.kz.lang);
+    _testCyrillic(AirbaPaySdkLang.ru.lang);
 
   });
 }

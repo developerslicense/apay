@@ -1,3 +1,5 @@
+import 'package:apay/airba_pay_sdk.dart';
+
 import 'models/payments_request.dart';
 
 class DataHolder {
@@ -22,6 +24,7 @@ class DataHolder {
   static String failureCallback = '';
   static String successBackUrl = '';
   static String successCallback = '';
+  static String currentLang = AirbaPaySdkLang.ru.lang;
 
   static List<Goods>? goods;
 }

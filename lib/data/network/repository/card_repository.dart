@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 
 import '../../data_holder.dart';
 import '../../models/base_network_response.dart';
-import '../../utils/base_strings.dart';
 import '../../utils/logger.dart';
 import '../api.dart';
 
@@ -21,7 +20,7 @@ Future<CardAddResponse?> cardAdd({
       accessToken: accessToken,
       requestType: RequestType.POST,
       params: {
-        'language': StringsBase.currentLang,
+        'language': DataHolder.currentLang,
         'account_id': DataHolder.userPhone,
         'email': DataHolder.userEmail,
         'phone': DataHolder.userPhone,

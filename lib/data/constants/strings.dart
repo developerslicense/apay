@@ -3,6 +3,7 @@ import '../utils/base_strings.dart';
 // эти исключения из-за того, что в enum используются
 const String tryAgainRu = 'Попробовать снова';
 const String tryAgainKz = 'Қайтадан байқап көріңіз';
+const String kzt = '₸';
 
 String paymentOfPurchase() {
   return getStrFromRes('Оплата покупки', 'Сатып алу төлемі');

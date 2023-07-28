@@ -1,7 +1,6 @@
 import 'dart:developer' as developer;
 
 import '../constants/regex.dart';
-import 'base_strings.dart';
 
 String getNumberCleared(
     String? amount,
@@ -30,7 +29,7 @@ String _clearNumberForLocale(
 
   RegExp? regex;
 
-  if (lang == StringsBase.en) {
+  if (lang == "en") {
     regex = RegExp(Regex.numberCleanEn);
   } else {
     regex = RegExp(Regex.numberCleanRu);

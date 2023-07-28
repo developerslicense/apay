@@ -1,23 +1,25 @@
 import 'package:intl/intl.dart';
 import 'dart:developer' as developer;
 
+import '../constants/strings.dart';
+
 import 'base_strings.dart';
 import 'number_clearer_utils.dart';
 
 class Money {
   int amount = 0;
-  String currency = StringsBase.kzt;
+  String currency = kzt;
 
-  Money(int amount, {String currency = StringsBase.kzt}) {
+  Money(int amount, {String currency = kzt}) {
     this.amount = int.parse(getNumberClearedWithMaxSymbol(amount.toString()));
   }
 
-  Money.initString({String? amount, String currency = StringsBase.kzt}) {
+  Money.initString({String? amount, String currency = kzt}) {
     var temp = double.parse(getNumberClearedWithMaxSymbol(amount?.toString()));
     this.amount = temp.toInt();
   }
 
-  Money.initDouble({double? amount, String currency = StringsBase.kzt}) {
+  Money.initDouble({double? amount, String currency = kzt}) {
     var temp = double.parse(getNumberClearedWithMaxSymbol(amount?.toString()));
     this.amount = temp.toInt();
   }
@@ -25,7 +27,7 @@ class Money {
   Money.initMoney(Money? amount) {
     var temp = double.parse(getNumberClearedWithMaxSymbol(amount?.amount.toString()));
     this.amount = temp.toInt();
-    currency = amount?.currency ?? StringsBase.kzt;
+    currency = amount?.currency ?? kzt;
   }
 
   String getFormatted() {

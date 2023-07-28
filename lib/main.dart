@@ -12,7 +12,6 @@ import 'package:apay/ui/themes/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'airba_pay_sdk.dart';
 import 'data/constants/routes.dart';
 
 /// Ссылка на документацию разработчика sdk ->
@@ -30,8 +29,6 @@ var _isDebugForSdkDeveloper = false;
 void main() async {
 
   if (_isDebugForSdkDeveloper) {
-    var arguments = AirbaPaySdk.getStringArgumentForInitProcessingTest();
-    AirbaPaySdk.initOnStart(arguments);
     runApp(const TestSdkApp());
 
   } else {
@@ -77,7 +74,7 @@ class SdkApp extends StatelessWidget {
             border: InputBorder.none
         )
       ),
-      home: const InitBeforeHomePage());
+      home: const HomePage(title: 'Airba Pay'));
   }
 }
 
@@ -119,6 +116,6 @@ class TestSdkApp extends StatelessWidget {
             border: InputBorder.none
         )
       ),
-      home: const HomePage(title: 'Airba Pay'));
+      home: const InitBeforeHomePage());
   }
 }

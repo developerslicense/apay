@@ -1,10 +1,10 @@
 import 'package:apay/data/constants/errors_code.dart';
-import 'package:apay/data/utils/base_strings.dart';
+import 'package:apay/data/data_holder.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../airba_pay_sdk.dart';
 import '../../../data/constants/banks_name.dart';
 import '../../../data/constants/strings.dart';
 import '../../../data/utils/exit_utils.dart';
@@ -38,13 +38,13 @@ class _ErrorWithInstructionPageState extends State<ErrorWithInstructionPage> {
 
     if (bankName == BanksName.kaspi.name) {
       faqText = forChangeLimitInKaspi();
-      faqUrl = StringsBase.currentLang == StringsBase.kz
+      faqUrl = DataHolder.currentLang == AirbaPaySdkLang.kz.lang
           ? 'https://static-data.object.pscloud.io/pay-manuals/Kaspi_kaz.mp4'
           : 'https://static-data.object.pscloud.io/pay-manuals/Kaspi_rus.mp4';
 
     } else {
       faqText = forChangeLimitInHomebank();
-      faqUrl = StringsBase.currentLang == StringsBase.kz
+      faqUrl = DataHolder.currentLang == AirbaPaySdkLang.kz.lang
           ? 'https://static-data.object.pscloud.io/pay-manuals/Halyk_kaz.mp4'
           : 'https://static-data.object.pscloud.io/pay-manuals/Halyk_rus.mp4';
     }

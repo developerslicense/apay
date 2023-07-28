@@ -60,7 +60,7 @@ Future<PaymentCreateResponse?> createPayment({
         "failure_back_url": DataHolder.failureBackUrl,
         "failure_callback": DataHolder.failureCallback,
         "invoice_id": invoiceId,
-        "language": StringsBase.currentLang,
+        "language": DataHolder.currentLang,
         "order_number": orderNumber,
         "phone": DataHolder.userPhone,
         if (mappedSettlementPayments.isNotEmpty) "settlement": { //не обязательный параметр, нужно присылать, если есть необходимость в разделении счетов по компаниям

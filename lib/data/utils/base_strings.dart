@@ -1,14 +1,9 @@
-class StringsBase {
-  static const String ru = 'ru';
-  static const String kz = 'kz';
-  static const String en = 'en';
-  static const String kzt = '₸';
+import '../../airba_pay_sdk.dart';
+import '../data_holder.dart';
 
-  static String currentLang = ru;
-}
 
 String getStrFromRes(String ru, String kz) {
-  if (StringsBase.currentLang == StringsBase.kz) {
+  if (DataHolder.currentLang == AirbaPaySdkLang.kz.lang) {
     return kz;
   } else {
     return ru;

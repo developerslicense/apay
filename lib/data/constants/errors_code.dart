@@ -2,7 +2,8 @@ import 'package:apay/data/constants/routes.dart';
 import 'package:apay/data/constants/strings.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/base_strings.dart';
+import '../../airba_pay_sdk.dart';
+import '../data_holder.dart';
 import '../utils/exit_utils.dart';
 
 enum ErrorsCode {
@@ -122,7 +123,7 @@ enum ErrorsCode {
   final String buttonBottomKz;
 
   String message() {
-    if (StringsBase.currentLang == StringsBase.kz) {
+    if (DataHolder.currentLang == AirbaPaySdkLang.kz.lang) {
       return messageKz;
     } else {
       return messageRu;
@@ -130,7 +131,7 @@ enum ErrorsCode {
   }
 
   String description() {
-    if (StringsBase.currentLang == StringsBase.kz) {
+    if (DataHolder.currentLang == AirbaPaySdkLang.kz.lang) {
       return descriptionKz;
     } else {
       return descriptionRu;
@@ -138,7 +139,7 @@ enum ErrorsCode {
   }
 
   String buttonTop() {
-    if (StringsBase.currentLang == StringsBase.kz) {
+    if (DataHolder.currentLang == AirbaPaySdkLang.kz.lang) {
       return buttonTopKz;
     } else {
       return buttonTopRu;
@@ -146,7 +147,7 @@ enum ErrorsCode {
   }
 
   String buttonBottom() {
-    if (StringsBase.currentLang == StringsBase.kz) {
+    if (DataHolder.currentLang == AirbaPaySdkLang.kz.lang) {
       return buttonBottomKz;
     } else {
       return buttonBottomRu;
