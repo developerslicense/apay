@@ -25,6 +25,6 @@ class LoggerAirba {
       Level.INFO,
       includeCallerInfo: true,
     );*/
-    logger.info('AirbaPay: $text');
+    logger.info('TagAirbaPay: $text');
   }
 }
