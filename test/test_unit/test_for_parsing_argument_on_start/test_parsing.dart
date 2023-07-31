@@ -103,7 +103,7 @@ String _initArguments() {
       'good_price=1000' +
       '?' +
       'good_category=Черный чай' +
-      '?'
+      '?' +
       'good_model=Чай Standard' +
       '?' +
       'good_quantity=2' +
