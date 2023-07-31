@@ -3,7 +3,7 @@ import 'card_type.dart';
 
 // https://en.wikipedia.org/wiki/Payment_card_number
 
-CardType getCardTypeFrmNumber(String input) {
+CardType getCardTypeFromNumber(String input) {
   CardType cardType;
   if (input.startsWith(RegExp(r'((34)|(37))'))) {
     cardType = CardType.americanExpress;

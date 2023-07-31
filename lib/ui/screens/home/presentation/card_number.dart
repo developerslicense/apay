@@ -53,7 +53,7 @@ class CardNumberEditTextWidget extends StatelessWidget {
               onChanged: (value) {
                 addState(context, CardNumberDataEvent(
                     cardNumber: isBlank(value) ? '' : value,
-                    iconPaymentSystem: getCardTypeFrmNumber(value).icon
+                    iconPaymentSystem: getCardTypeFromNumber(value).icon
                 ));
 
                 if (!isBlank(readState(context).cardNumberState?.error)) {
