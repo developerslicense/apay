@@ -16,8 +16,7 @@ import '../../../../data/network/repository/payments_repository.dart';
 import '../../../../data/utils/card_utils/card_date_utils.dart';
 import '../../../../data/utils/card_utils/card_utils.dart';
 import '../../../../data/utils/number_clearer_utils.dart';
-import '../../../themes/colors.dart';
-import '../../../themes/fonts.dart';
+import '../../../themes/button_style.dart';
 import '../../error/error_util.dart';
 
 Positioned initConfirmButton(BuildContext context) {
@@ -31,9 +30,10 @@ Positioned initConfirmButton(BuildContext context) {
               onPressed: () {
                 _onPressed(context);
               },
+              style: buildButtonStyle(),
               child: Text(
                 '${payAmount()} ${DataHolder.purchaseAmount}',
-                style: Fonts.h2().copyWith(color: ColorsSdk.textInversion),
+                style: buildButtonTextStyle(),
               ))));
 }
 

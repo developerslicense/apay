@@ -63,8 +63,8 @@ class _RepeatPageState extends State<RepeatPage> {
                         SizedBox(
                           height: progressBarSize,
                           width: progressBarSize,
-                          child: const CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(ColorsSdk.mainBrand),
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(ColorsSdk.colorBrandMain),
                           ),
                         )
                       ],

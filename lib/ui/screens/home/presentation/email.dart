@@ -50,7 +50,7 @@ class EmailEditTextWidget extends StatelessWidget {
               }
             },
             controller: controller,
-            cursorColor: ColorsSdk.mainBrand,
+            cursorColor: ColorsSdk.colorBrandMain,
             style: Fonts.regular(),
             textInputAction: TextInputAction.done,
             decoration: inputTextFieldDecoration(

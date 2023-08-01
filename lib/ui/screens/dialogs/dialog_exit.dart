@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../data/constants/strings.dart';
 import '../../../data/utils/exit_utils.dart';
-import '../../themes/colors.dart';
+import '../../themes/button_style.dart';
 import '../../themes/fonts.dart';
 
 Widget initDialogExit(BuildContext context) {
@@ -30,9 +30,10 @@ Widget initDialogExit(BuildContext context) {
                   onPressed: () {
                     Navigator.of(context, rootNavigator: true).pop('dialog');
                   },
+                  style: buildButtonStyle(),
                   child: Text(
                     no(),
-                    style: Fonts.h2().copyWith(color: ColorsSdk.textInversion),
+                    style: buildButtonTextStyle(),
                   ))),
           Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
@@ -40,19 +41,10 @@ Widget initDialogExit(BuildContext context) {
                   onPressed: () {
                     exitSdk();
                   },
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
-                            if (states.contains(MaterialState.pressed)) {
-                              return Theme.of(context)
-                                  .colorScheme
-                                  .primary
-                                  .withOpacity(0.5);
-                            }
-                            return ColorsSdk.gray5;
-                          })),
+                  style: buildButtonStyle(isMainBrand: false),
                   child: Text(
                     yes(),
-                    style: Fonts.h2().copyWith(color: ColorsSdk.mainBrand),
+                    style: buildButtonTextStyle(isMainBrand: false),
                   ))),
         ],
       ),

@@ -2,7 +2,7 @@ import 'package:apay/data/constants/errors_code.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../themes/colors.dart';
+import '../../themes/button_style.dart';
 import '../../themes/fonts.dart';
 import '../dialogs/dialog_exit.dart';
 
@@ -84,28 +84,20 @@ class _ErrorPageState extends State<ErrorPage> {
                           onPressed: () {
                             error.clickOnTop(context);
                           },
+                          style: buildButtonStyle(),
                           child: Text(
                             error.buttonTop(),
-                            style: Fonts.h2().copyWith(color: ColorsSdk.textInversion),
+                            style: buildButtonTextStyle(),
                           )),
                         const SizedBox(height: 16,),
                         TextButton(
                           onPressed: () {
                             error.clickOnBottom(context);
                           },
-                          style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                  (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.pressed)) {
-                                  return Theme.of(context)
-                                      .colorScheme
-                                      .primary
-                                      .withOpacity(0.5);
-                                }
-                                return ColorsSdk.gray5;
-                              })),
+                          style: buildButtonStyle(isMainBrand: false),
                           child: Text(
                             error.buttonBottom(),
-                            style: Fonts.h2().copyWith(color: ColorsSdk.mainBrand),
+                            style: buildButtonTextStyle(isMainBrand: false),
                           )),
                       ]
                   )

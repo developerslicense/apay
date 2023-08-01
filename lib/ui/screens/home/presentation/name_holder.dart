@@ -59,7 +59,7 @@ class NameHolderEditTextWidget extends StatelessWidget {
                 addState(context, const NameHolderEvent(errorNameHolder: ''));
               }
             },
-            cursorColor: ColorsSdk.mainBrand,
+            cursorColor: ColorsSdk.colorBrandMain,
             style: Fonts.regular(),
             textInputAction: TextInputAction.next,
             decoration: inputTextFieldDecoration(

@@ -1,14 +1,11 @@
-import 'package:apay/data/constants/errors_code.dart';
-import 'package:apay/data/utils/base_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../data/constants/strings.dart';
 import '../../../data/utils/exit_utils.dart';
-import '../../themes/colors.dart';
+import '../../themes/button_style.dart';
 import '../../themes/fonts.dart';
-import '../dialogs/dialog_exit.dart';
 
 class ErrorSomethingWrongPage extends StatefulWidget {
   const ErrorSomethingWrongPage({super.key});
@@ -78,9 +75,10 @@ class _ErrorSomethingWrongPageState extends State<ErrorSomethingWrongPage> {
                   onPressed: () {
                     exitSdk();
                   },
+                  style: buildButtonStyle(),
                   child: Text(
                     goToMarker(),
-                    style: Fonts.h2().copyWith(color: ColorsSdk.textInversion),
+                    style: buildButtonTextStyle(),
                   )),
             ]
         )

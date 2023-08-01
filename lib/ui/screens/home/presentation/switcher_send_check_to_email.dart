@@ -13,7 +13,7 @@ class SwitchedSendCheckToEmailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
       return CupertinoSwitch(
-        activeColor: ColorsSdk.mainBrand,
+        activeColor: ColorsSdk.colorBrandMain,
         thumbColor: ColorsSdk.gray0,
         trackColor: ColorsSdk.gray25,
         value: state.emailState?.switched ?? false,

@@ -14,6 +14,6 @@ BoxDecoration initEditTextBoxDecoration(
       border: hasError
           ? Border.all(color: ColorsSdk.stateError)
           : focusNode.hasFocus
-          ? Border.all(color: ColorsSdk.mainBrand)
+          ? Border.all(color: ColorsSdk.colorBrandMain)
           : Border.all(color: ColorsSdk.gray5));
 }

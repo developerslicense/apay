@@ -2,6 +2,7 @@ import 'package:apay/airba_pay_sdk.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/models/payments_request.dart';
+import '../../themes/button_style.dart';
 
 class InitBeforeHomePage extends StatefulWidget {
   const InitBeforeHomePage({super.key});
@@ -28,6 +29,7 @@ class _InitBeforeHomePageState extends State<InitBeforeHomePage> {
           onPressed: () {
             _start(context, timeStamp);
           },
+          style: buildButtonStyle(),
           child: const Text('Перейти на эквайринг'),
         )
       ],
@@ -59,6 +61,7 @@ class _InitBeforeHomePageState extends State<InitBeforeHomePage> {
               category: 'Black tea')
         ],
         userEmail: 'test@test.com',
+        // colorBrandMain: Color(0xFFF15515),
         connectTimeout: 60,
         receiveTimeout: 60,
         sendTimeout: 60);

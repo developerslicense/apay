@@ -23,7 +23,8 @@ import 'data/constants/routes.dart';
 /// Ссылка на гит sdk Android ->
 /// Ссылка на гит sdk iOS ->
 
-/// Когда нужно проверить либу во время разработки, то true. Без этого будет черный экран
+/// Когда нужно проверить либу во время разработки, то true.
+/// Без этого не произойдут нужные инициализации
 var _isDebugForSdkDeveloper = false;
 
 void main() async {
@@ -59,20 +60,10 @@ class SdkApp extends StatelessWidget {
         routesErrorWithInstruction: (context) => const ErrorWithInstructionPage(),
       },
       theme: ThemeData(
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-              textStyle: Fonts.h1(),
-              backgroundColor: ColorsSdk.buttonMainBrand,
-              minimumSize: const Size.fromHeight(48),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              )
-          )
-        ),
         useMaterial3: true,
         inputDecorationTheme: const InputDecorationTheme(
             border: InputBorder.none
-        )
+        ),
       ),
       home: const HomePage(title: 'Airba Pay'));
   }
@@ -101,16 +92,6 @@ class TestSdkApp extends StatelessWidget {
         routesErrorWithInstruction: (context) => const ErrorWithInstructionPage(),
       },
       theme: ThemeData(
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-              textStyle: Fonts.h1(),
-              backgroundColor: ColorsSdk.buttonMainBrand,
-              minimumSize: const Size.fromHeight(48),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              )
-          )
-        ),
         useMaterial3: true,
         inputDecorationTheme: const InputDecorationTheme(
             border: InputBorder.none

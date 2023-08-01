@@ -20,7 +20,7 @@ InputDecoration inputTextFieldDecoration({
       counterText: "",
       floatingLabelStyle: Fonts
           .regular()
-          .copyWith(color: isError ? ColorsSdk.stateError : ColorsSdk.mainBrand),
+          .copyWith(color: isError ? ColorsSdk.stateError : ColorsSdk.colorBrandMain),
       labelStyle: Fonts
           .regular()
           .copyWith(color: isError ? ColorsSdk.stateError : ColorsSdk.textLight),

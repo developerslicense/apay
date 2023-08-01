@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../data/constants/routes.dart';
 import '../../../data/constants/strings.dart';
 import '../../../data/utils/exit_utils.dart';
-import '../../../data/utils/logger.dart';
-import '../../themes/colors.dart';
+import '../../themes/button_style.dart';
 import '../../themes/fonts.dart';
-import '../../ui_components/circular_progress_bar.dart';
 
 class ErrorFinalPage extends StatefulWidget {
   const ErrorFinalPage({super.key});
@@ -68,9 +64,10 @@ class _ErrorFinalPageState extends State<ErrorFinalPage> {
                         onPressed: () {
                           exitSdk();
                         },
+                        style: buildButtonStyle(),
                         child: Text(
                           goToMarker(),
-                          style: Fonts.h2().copyWith(color: ColorsSdk.textInversion),
+                          style: buildButtonTextStyle(),
                         ))),
               ],
             ),

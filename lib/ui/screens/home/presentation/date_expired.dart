@@ -54,7 +54,7 @@ class DateExpiredEditTextWidget extends StatelessWidget {
                   addState(context, const DateExpiredEvent(errorDateExpired: ''));
                 }
               },
-              cursorColor: ColorsSdk.mainBrand,
+              cursorColor: ColorsSdk.colorBrandMain,
               style: Fonts.regular(),
               textInputAction: TextInputAction.next,
               decoration: inputTextFieldDecoration(

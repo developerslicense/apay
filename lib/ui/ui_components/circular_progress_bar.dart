@@ -10,9 +10,9 @@ class ProgressDialogPrimary extends StatelessWidget {
         .of(context)
         .platformBrightness == Brightness.light;
     return Scaffold(
-      body: const Center(
+      body: Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(ColorsSdk.mainBrand),
+          valueColor: AlwaysStoppedAnimation<Color>(ColorsSdk.colorBrandMain),
         ),
       ),
       backgroundColor: brightness ?  ColorsSdk.bgMain.withOpacity(

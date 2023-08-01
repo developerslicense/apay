@@ -8,6 +8,7 @@ import '../../../airba_pay_sdk.dart';
 import '../../../data/constants/banks_name.dart';
 import '../../../data/constants/strings.dart';
 import '../../../data/utils/exit_utils.dart';
+import '../../themes/button_style.dart';
 import '../../themes/colors.dart';
 import '../../themes/fonts.dart';
 
@@ -155,28 +156,20 @@ class _ErrorWithInstructionPageState extends State<ErrorWithInstructionPage> {
                             onPressed: () {
                               error.clickOnTop(context);
                             },
+                            style: buildButtonStyle(),
                             child: Text(
                               error.buttonTop(),
-                              style: Fonts.h2().copyWith(color: ColorsSdk.textInversion),
+                              style: buildButtonTextStyle(),
                             )),
                           const SizedBox(height: 16,),
                           TextButton(
                             onPressed: () {
                               error.clickOnBottom(context);
                             },
-                            style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith<Color?>(
-                                    (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.pressed)) {
-                                    return Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withOpacity(0.5);
-                                  }
-                                  return ColorsSdk.gray5;
-                                })),
+                            style: buildButtonStyle(isMainBrand: false),
                             child: Text(
                               error.buttonBottom(),
-                              style: Fonts.h2().copyWith(color: ColorsSdk.mainBrand),
+                              style: buildButtonTextStyle(isMainBrand: false),
                             )),
                         ]
                     )

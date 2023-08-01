@@ -58,7 +58,7 @@ class CVVEditTextWidget extends StatelessWidget {
                     addState(context, const CvvEvent(errorCvv: ''));
                   }
                 },
-                cursorColor: ColorsSdk.mainBrand,
+                cursorColor: ColorsSdk.colorBrandMain,
                 style: Fonts.regular(),
                 textInputAction: TextInputAction.next,
                 decoration: inputTextFieldDecoration(

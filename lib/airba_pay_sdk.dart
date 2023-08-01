@@ -1,4 +1,5 @@
 import 'package:apay/data/models/payments_request.dart';
+import 'package:apay/ui/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'data/constants/routes.dart';
@@ -34,7 +35,9 @@ class AirbaPaySdk {
     int connectTimeout = 60,
     int receiveTimeout = 60,
     int sendTimeout = 60,
-    AirbaPaySdkLang lang = AirbaPaySdkLang.ru
+    AirbaPaySdkLang lang = AirbaPaySdkLang.ru,
+    Color? colorBrandMain,
+    Color? colorBrandInversion,
   }) {
     DataHolder.accessToken = null;
     DataHolder.isProd = isProd;
@@ -61,6 +64,14 @@ class AirbaPaySdk {
     DataHolder.goods = goods;
 
     DataHolder.currentLang = lang.lang;
+
+    if(colorBrandInversion != null) {
+      ColorsSdk.colorBrandInversion = colorBrandInversion;
+    }
+
+    if(colorBrandMain != null) {
+      ColorsSdk.colorBrandMain = colorBrandMain;
+    }
 
     Navigator.pushNamed(
       context,

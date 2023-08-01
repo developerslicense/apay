@@ -60,7 +60,7 @@ class CardNumberEditTextWidget extends StatelessWidget {
                   addState(context, const CardNumberEvent(errorCardNumber: ''));
                 }
               },
-              cursorColor: ColorsSdk.mainBrand,
+              cursorColor: ColorsSdk.colorBrandMain,
               style: Fonts.regular(),
               textInputAction: TextInputAction.next,
               decoration: inputTextFieldDecoration(
