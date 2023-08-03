@@ -42,7 +42,7 @@ Future<PaymentCreateResponse?> createPayment({
         "account_id": DataHolder.userPhone,
         "amount": double.parse(getNumberCleared(DataHolder.purchaseAmount)),
         "auto_charge": 0,
-        "card_id": null, // todo cardId
+        "card_id": DataHolder.cardId, // todo cardId
         "card_save": saveCard,
         "cart": {
           "goods": mappedGoods
