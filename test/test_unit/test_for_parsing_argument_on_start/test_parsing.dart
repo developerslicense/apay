@@ -1,4 +1,4 @@
-import 'package:apay/data/models/payments_request.dart';
+import 'package:apay/data/utils/init_goods_from_string.dart';
 import 'package:apay/data/utils/string_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -46,8 +46,8 @@ void testParsing() {
         resultArgumentProducts[2],
         '=Чай Standard?good_quantity=2?good_brand=Greenfild?good_price=2000?good_category=Зеленый чай?');
 
-    var good1 = Goods.initFromString(resultArgumentProducts[1]);
-    var good2 = Goods.initFromString(resultArgumentProducts[2]);
+    var good1 = initGoodsFromString(resultArgumentProducts[1]);
+    var good2 = initGoodsFromString(resultArgumentProducts[2]);
 
     expect(good1.category, 'Черный чай');
     expect(good1.model, 'Чай Tess Banana Split черный 20 пирамидок');

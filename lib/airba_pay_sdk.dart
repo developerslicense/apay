@@ -1,4 +1,3 @@
-import 'package:apay/data/models/payments_request.dart';
 import 'package:apay/ui/themes/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +11,40 @@ enum AirbaPaySdkLang {
 
   const AirbaPaySdkLang(this.lang);
   final String lang;
+}
+
+class SettlementPayment {
+  int? amount;
+  String? companyId;
+}
+
+class Goods {
+  String? brand;
+  String? category;
+  String? model;
+  int? discount;
+  int? quantity;
+  int? price;
+
+  Goods({
+    this.brand,
+    this.quantity,
+    this.price,
+    this.model,
+    this.discount,
+    this.category,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      "brand": brand,
+      "category": category,
+      "discount": discount,
+      "model": model,
+      "price": price,
+      "quantity": quantity
+    };
+  }
 }
 
 class AirbaPaySdk {
@@ -31,6 +64,7 @@ class AirbaPaySdk {
     required String successBackUrl,
     required String successCallback,
     required List<Goods> goods,
+    required List<SettlementPayment>? settlementPayment,
     String? userEmail,
     int connectTimeout = 60,
     int receiveTimeout = 60,
@@ -62,6 +96,7 @@ class AirbaPaySdk {
     DataHolder.invoiceId = invoiceId;
 
     DataHolder.goods = goods;
+    DataHolder.settlementPayments = settlementPayment;
 
     DataHolder.currentLang = lang.lang;
 

@@ -7,8 +7,6 @@ import 'package:apay/ui/screens/home/home_page.dart';
 import 'package:apay/ui/screens/home/init_before_home_page.dart';
 import 'package:apay/ui/screens/success/success_page.dart';
 import 'package:apay/ui/screens/webview/web_view_page.dart';
-import 'package:apay/ui/themes/colors.dart';
-import 'package:apay/ui/themes/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

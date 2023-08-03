@@ -1,11 +1,9 @@
 import 'package:apay/data/models/base_network_response.dart';
-import 'package:apay/data/utils/base_strings.dart';
 import 'package:apay/data/utils/logger.dart';
 import 'package:dio/dio.dart';
 
 import '../../data_holder.dart';
 import '../../models/card.dart';
-import '../../models/payments_request.dart';
 import '../../models/payments_response.dart';
 import '../api.dart';
 
@@ -17,9 +15,7 @@ Future<PaymentCreateResponse?> createPayment({
   required String invoiceId,
   required String? cardId, //todo откуда взять???
   required String? accessToken,
-  required bool saveCard,
-  required List<Goods> goods,
-  List<SettlementPayment>? settlementPayments
+  required bool saveCard
 
 }) async {
   Api api = Api();
@@ -28,8 +24,8 @@ Future<PaymentCreateResponse?> createPayment({
     var mappedSettlementPayments = [];
     var mappedGoods = [];
 
-    if (settlementPayments != null) {
-      for (var element in settlementPayments) {
+    if (DataHolder.settlementPayments != null) {
+      for (var element in DataHolder.settlementPayments!) {
         mappedSettlementPayments.add({
           "amount": element.amount?.toDouble(),
           "company_id": element.companyId
@@ -37,7 +33,7 @@ Future<PaymentCreateResponse?> createPayment({
       }
     }
 
-    for (var element in goods) {
+    for (var element in DataHolder.goods ?? []) {
       mappedGoods.add(element.toMap());
     }
 

@@ -1,6 +1,5 @@
 import 'package:apay/airba_pay_sdk.dart';
 
-import 'models/payments_request.dart';
 
 class DataHolder {
   static String baseUrl = '';
@@ -27,4 +26,5 @@ class DataHolder {
   static String currentLang = AirbaPaySdkLang.ru.lang;
 
   static List<Goods>? goods;
+  static List<SettlementPayment>? settlementPayments;
 }

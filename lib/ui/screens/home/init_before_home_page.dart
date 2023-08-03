@@ -1,7 +1,6 @@
 import 'package:apay/airba_pay_sdk.dart';
 import 'package:flutter/material.dart';
 
-import '../../../data/models/payments_request.dart';
 import '../../themes/button_style.dart';
 
 class InitBeforeHomePage extends StatefulWidget {
@@ -60,6 +59,7 @@ class _InitBeforeHomePageState extends State<InitBeforeHomePage> {
               price: 1000,
               category: 'Black tea')
         ],
+        settlementPayment: [],
         userEmail: 'test@test.com',
         // colorBrandMain: Color(0xFFF15515),
         connectTimeout: 60,

@@ -171,7 +171,6 @@ void _startProcessing(
       accessToken: accessToken,
       cardId: null,
       //todo логика насчет сохранненой карты
-      goods: DataHolder.goods ?? [],
     );
 
     AuthResponse? authResponseAfter = await auth(
