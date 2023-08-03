@@ -5,15 +5,12 @@ import 'package:dio/dio.dart';
 import '../../data_holder.dart';
 import '../../models/card.dart';
 import '../../models/payments_response.dart';
+import '../../utils/number_clearer_utils.dart';
 import '../api.dart';
 
 // https://sps.airbapay.kz/acquiring-api/sdk/swagger/index.html#/
 
 Future<PaymentCreateResponse?> createPayment({
-  required String amount,
-  required String orderNumber,
-  required String invoiceId,
-  required String? cardId, //todo откуда взять???
   required String? accessToken,
   required bool saveCard
 
@@ -43,9 +40,9 @@ Future<PaymentCreateResponse?> createPayment({
       requestType: RequestType.POST,
       params: {
         "account_id": DataHolder.userPhone,
-        "amount": double.parse(amount),
+        "amount": double.parse(getNumberCleared(DataHolder.purchaseAmount)),
         "auto_charge": 0,
-        "card_id": cardId,
+        "card_id": null, // todo cardId
         "card_save": saveCard,
         "cart": {
           "goods": mappedGoods
@@ -55,9 +52,9 @@ Future<PaymentCreateResponse?> createPayment({
         "email": DataHolder.userEmail,
         "failure_back_url": DataHolder.failureBackUrl,
         "failure_callback": DataHolder.failureCallback,
-        "invoice_id": invoiceId,
+        "invoice_id": DataHolder.invoiceId,
         "language": DataHolder.currentLang,
-        "order_number": orderNumber,
+        "order_number": DataHolder.orderNumber,
         "phone": DataHolder.userPhone,
         if (mappedSettlementPayments.isNotEmpty) "settlement": { //не обязательный параметр, нужно присылать, если есть необходимость в разделении счетов по компаниям
           "payments": mappedSettlementPayments

@@ -164,12 +164,8 @@ void _startProcessing(
     String? accessToken = authResponseBeforeCreate?.getAccessToken();
 
     PaymentCreateResponse? result = await createPayment(
-      amount: getNumberCleared(DataHolder.purchaseAmount),
-      orderNumber: DataHolder.orderNumber,
-      invoiceId: DataHolder.invoiceId,
       saveCard: saveCard,
       accessToken: accessToken,
-      cardId: null,
       //todo логика насчет сохранненой карты
     );
 
