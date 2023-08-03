@@ -38,7 +38,6 @@ class _HomePageState extends State<HomePage> {
 
   final _emailFocusNode = FocusNode();
   final _cardNumberFocusNode = FocusNode();
-  final _nameHolderFocusNode = FocusNode();
   final _dateExpiredFocusNode = FocusNode();
   final _cvvFocusNode = FocusNode();
 
@@ -49,7 +48,6 @@ class _HomePageState extends State<HomePage> {
   Widget? _cvvAndDateExpired;
 
   Widget? _cardNumberError;
-  Widget? _nameHolderError;
   Widget? _emailError;
   Widget? _cvvAndDateExpiredError;
   Widget? _cvvError;
@@ -94,11 +92,7 @@ class _HomePageState extends State<HomePage> {
       const TopInfoWidget(),
       CardNumberEditTextWidget(
           focusNode: _cardNumberFocusNode,
-          focusNodeNameHolder: _nameHolderFocusNode),
-      const SizedBox(height: 16),
-      NameHolderEditTextWidget(
-          focusNode: _nameHolderFocusNode,
-          focusNodeDateExpired: _dateExpiredFocusNode),
+          focusNodeNameHolder: _dateExpiredFocusNode),
       const SizedBox(height: 16),
       _cvvAndDateExpired!,
       const SizedBox(height: 37.0),
@@ -142,10 +136,6 @@ class _HomePageState extends State<HomePage> {
       addState(context, CardNumberEvent(errorCardNumber: readState(context).cardNumberState?.error));
     });
 
-    _nameHolderFocusNode.addListener(() {
-      addState(context, NameHolderEvent(errorNameHolder: readState(context).nameHolderState?.error));
-    });
-
     _dateExpiredFocusNode.addListener(() {
       addState(context, DateExpiredEvent(errorDateExpired: readState(context).dateExpiredState?.error));
     });
@@ -163,7 +153,6 @@ class _HomePageState extends State<HomePage> {
   void dispose() {
     _emailFocusNode.dispose();
     _cardNumberFocusNode.dispose();
-    _nameHolderFocusNode.dispose();
     _dateExpiredFocusNode.dispose();
     _cvvFocusNode.dispose();
     super.dispose();
@@ -190,10 +179,6 @@ class _HomePageState extends State<HomePage> {
         child: BlocListener<HomeBloc, HomeState>(
             listener: (context, state) {
 
-              // CachedNetworkImage
-              /*if (bankIconUrl != null && bankTitle != null) //todo
-             _initBankInfo(),*/
-
               if (state.saveCardData && !_snackBarShowed) {
                 ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
@@ -214,7 +199,6 @@ class _HomePageState extends State<HomePage> {
 
               setState(() {
                 _initWidgetCardNumber(state);
-                _initWidgetNameHolder(state);
                 _initWidgetDateExpiredAndCvvError(state);
                 _initWidgetDateExpiredError(state);
                 _initWidgetCvvError(state);
@@ -250,28 +234,13 @@ class _HomePageState extends State<HomePage> {
     if (!isBlank(state.cardNumberState?.error)
         && _cardNumberError == null) {
       _cardNumberError = initErrorInfoField(state.cardNumberState!.error!);
-      _widgets.insert(3, _cardNumberError!);
+      _widgets.insert(4, _cardNumberError!);
 
     } else if (isBlank(state.cardNumberState?.error)
         && _cardNumberError != null) {
       _widgets.remove(_cardNumberError);
       _cardNumberError = null;
 
-    }
-  }
-
-  void _initWidgetNameHolder(HomeState state) {
-    if (!isBlank(state.nameHolderState?.error)
-        && _nameHolderError == null) {
-      int position = _cardNumberError != null ? 6 : 5;
-      _nameHolderError = initErrorInfoField(state.nameHolderState!.error!);
-      _widgets.insert(position, _nameHolderError!);
-
-    } else if (isBlank(state.nameHolderState?.error)
-        && _nameHolderError != null) {
-
-      _widgets.remove(_nameHolderError);
-      _nameHolderError = null;
     }
   }
 
@@ -360,11 +329,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   int _calculateDateExpiredAndCvvErrorPosition() {
-    int position = 7;
+    int position = 6;
     if (_cardNumberError != null) {
-      position+=1;
-    }
-    if (_nameHolderError != null) {
       position+=1;
     }
     return position;

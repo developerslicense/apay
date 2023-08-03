@@ -68,14 +68,6 @@ void _onPressed(BuildContext context) {
     addState(context, const CardNumberEvent(errorCardNumber: null));
   }
 
-  if (isBlank(readState(context).nameHolder)) {
-    hasError = true;
-    addState(context, NameHolderEvent(errorNameHolder: needFillTheField()));
-
-  } else {
-    addState(context, const NameHolderEvent(errorNameHolder: null));
-  }
-
   if (isBlank(readState(context).cvv)) {
     //todo проверку на валидность c бэка?
     hasError = true;
@@ -107,7 +99,7 @@ void _onPressed(BuildContext context) {
     BankCard card = BankCard(
       pan: getNumberCleared(readState(context).cardNumber),
       expire: readState(context).dateExpired,
-      name: readState(context).nameHolder,
+      name: "Name Holder"
     );
 
     DataHolder.userEmail = readState(context).email;
