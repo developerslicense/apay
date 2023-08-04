@@ -23,21 +23,14 @@ class _ErrorWithInstructionPageState extends State<ErrorWithInstructionPage> {
   _ErrorWithInstructionPageState();
 
   late VideoPlayerController _controller;
-  late String bankName;
   late String faqUrl;
   late String faqText;
 
   @override
   void initState() {
     super.initState();
-    try {
-      bankName = ModalRoute.of(context)?.settings.arguments as String;
 
-    } catch (e) {
-      bankName = BanksName.kaspi.name;
-    }
-
-    if (bankName == BanksName.kaspi.name) {
+    if (DataHolder.bankName == BanksName.kaspi.name) {
       faqText = forChangeLimitInKaspi();
       faqUrl = DataHolder.currentLang == AirbaPaySdkLang.kz.lang
           ? 'https://static-data.object.pscloud.io/pay-manuals/Kaspi_kaz.mp4'

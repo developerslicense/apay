@@ -93,7 +93,6 @@ class _RepeatPageState extends State<RepeatPage> {
         openErrorPageWithCondition(
             response?.errorCode(),
             context,
-            '',
             true
         );
 

@@ -10,6 +10,7 @@ class DataHolder {
 
   static bool isProd = true;
 
+  static String? bankName;
   static String? accessToken;
   static String? cardId;
   static String purchaseAmount = '';

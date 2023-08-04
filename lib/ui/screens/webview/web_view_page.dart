@@ -69,12 +69,11 @@ class _WebViewContainerState extends State<WebViewPage> {
                         .replaceAll('errorMsg', '')//todo временный костыль на период, пока не будет исправлено на бэке
                     ),
                     context,
-                    '',
                     _isRetry
-                ); //todo
+                );
               } catch (e) {
                 LoggerAirba.log('Parsing error: $e');
-                openErrorPageWithCondition(0, context, null, false);
+                openErrorPageWithCondition(0, context, false);
               }
             }
 

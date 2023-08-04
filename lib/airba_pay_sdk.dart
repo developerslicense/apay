@@ -73,6 +73,7 @@ class AirbaPaySdk {
     Color? colorBrandMain,
     Color? colorBrandInversion,
   }) {
+    DataHolder.bankName = null;
     DataHolder.accessToken = null;
     DataHolder.isProd = isProd;
     DataHolder.baseUrl = isProd ? 'https://ps.airbapay.kz/acquiring-api/sdk' : 'https://sps.airbapay.kz/acquiring-api/sdk';

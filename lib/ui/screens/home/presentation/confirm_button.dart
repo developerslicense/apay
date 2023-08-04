@@ -127,9 +127,9 @@ void _onPressed(BuildContext context) {
             routesSuccess,
           );
         },
-        (int errorCode, bool isRetry, String? bankName) {
+        (int errorCode, bool isRetry) {
           addState(context, const PaymentProcessingEvent(isPaymentProcessing: false));
-          openErrorPageWithCondition(errorCode, context, bankName, isRetry);
+          openErrorPageWithCondition(errorCode, context, isRetry);
         },
     );
 
@@ -143,7 +143,7 @@ void _startProcessing(
     String? cvv,
     void Function(Secure3D? secure3d, bool isRetry) on3DS,
     void Function() onSuccess,
-    void Function(int errorCode, bool isRetry, String? bankName) onError,
+    void Function(int errorCode, bool isRetry) onError,
 ) async {
 
   try {
@@ -177,7 +177,7 @@ void _startProcessing(
     );
 
     if (entryResponse == null || entryResponse.errorCode() != 0) {
-      onError(entryResponse?.errorCode() ?? ErrorsCode.error_1.code, entryResponse?.isRetry() ?? false, '');
+      onError(entryResponse?.errorCode() ?? ErrorsCode.error_1.code, entryResponse?.isRetry() ?? false);
 
     } else if (entryResponse.isSecure3D() == true) {
       on3DS(entryResponse.secure3D(), entryResponse.isRetry() ?? false);
@@ -186,7 +186,7 @@ void _startProcessing(
       onSuccess();
     }
   } catch (e) {
-    onError(ErrorsCode.error_1.code, false, null);
+    onError(ErrorsCode.error_1.code, false);
   }
 
 }

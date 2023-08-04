@@ -2,12 +2,12 @@ import 'package:apay/data/constants/routes.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../data/constants/errors_code.dart';
+import '../../../data/data_holder.dart';
 import '../../../data/utils/string_utils.dart';
 
 void openErrorPageWithCondition(
     int? errorCode,
     BuildContext context,
-    String? bankName,
     bool isRetry
 ) {
   final ErrorsCode error = ErrorsCode.initByCode(errorCode ?? 1);
@@ -15,8 +15,7 @@ void openErrorPageWithCondition(
   if (error == ErrorsCode.error_1) {
     Navigator.pushNamed(
         context,
-        routesErrorSomethingWrong,
-        arguments: bankName
+        routesErrorSomethingWrong
     );
 
   } else if (errorCode == ErrorsCode.error_5020.code || errorCode == null) {
@@ -25,11 +24,10 @@ void openErrorPageWithCondition(
       routesErrorFinal,
     );
 
-  } else if (errorCode == ErrorsCode.error_5999.code && !isBlank(bankName)) {
+  } else if (errorCode == ErrorsCode.error_5999.code && !isBlank(DataHolder.bankName ?? "")) {
     Navigator.pushNamed(
       context,
-      routesErrorWithInstruction,
-      arguments: bankName
+      routesErrorWithInstruction
     );
 
   } else {
