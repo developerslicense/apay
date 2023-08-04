@@ -177,7 +177,7 @@ void _startProcessing(
     );
 
     if (entryResponse == null || entryResponse.errorCode() != 0) {
-      onError(entryResponse?.errorCode() ?? ErrorsCode.error_1.code, entryResponse?.isRetry() ?? false);
+      onError(entryResponse?.errorCode() ?? ErrorsCode.error_1.code, entryResponse?.isRetry() ?? true);
 
     } else if (entryResponse.isSecure3D() == true) {
       on3DS(entryResponse.secure3D(), entryResponse.isRetry() ?? false);
@@ -186,7 +186,7 @@ void _startProcessing(
       onSuccess();
     }
   } catch (e) {
-    onError(ErrorsCode.error_1.code, false);
+    onError(ErrorsCode.error_1.code, true);
   }
 
 }
