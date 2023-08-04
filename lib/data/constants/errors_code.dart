@@ -156,23 +156,31 @@ enum ErrorsCode {
 
   void clickOnTop(BuildContext context) {
     switch (code) {
-      case 5002: { Navigator.of(context).popUntil((route) => route.isFirst); }
-      case 5003: { Navigator.of(context).popUntil((route) => route.isFirst); }
-      case 5006: { Navigator.of(context).popUntil((route) => route.isFirst); }
-      case 5007: { Navigator.pushNamed(context, routesRepeat); }
-      case 5008: { Navigator.pushNamed(context, routesRepeat); }
-      case 5009: { Navigator.pushNamed(context, routesRepeat); }
-      case 5999: { Navigator.pushNamed(context, routesRepeat); }
+      case 5002: { _goToHome(context); }
+      case 5003: { _goToHome(context); }
+      case 5006: { _goToHome(context); }
+      case 5007: { _goToRepeat(context); }
+      case 5008: { _goToRepeat(context); }
+      case 5009: { _goToRepeat(context); }
+      case 5999: { _goToRepeat(context); }
       default: { exitSdk(); }
     }
   }
 
   void clickOnBottom(BuildContext context) {
     switch (code) {
-      case 5008: { Navigator.of(context).popUntil((route) => route.isFirst); }
-      case 5999: { Navigator.of(context).popUntil((route) => route.isFirst); }
+      case 5008: { _goToHome(context); }
+      case 5999: { _goToHome(context); }
       default: { exitSdk(); }
 
     }
+  }
+
+  void _goToRepeat(BuildContext context) {
+    Navigator.pushNamed(context, routesRepeat);
+  }
+
+  void _goToHome(BuildContext context) {
+    Navigator.of(context).popUntil((route) => route.isFirst);
   }
 }
