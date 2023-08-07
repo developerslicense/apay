@@ -109,17 +109,17 @@ void _onPressed(BuildContext context) {
         readState(context).emailState?.switched ?? false,
         card,
         readState(context).cvv,
-        (Secure3D? secure3d, bool isRetry) {
+        (Secure3D? secure3d) {
           addState(context, const PaymentProcessingEvent(isPaymentProcessing: false));
-          openWebView(secure3d?.action, isRetry.toString(), context);
+          openWebView(secure3d?.action, context);
         },
         () {
           addState(context, const PaymentProcessingEvent(isPaymentProcessing: false));
           openSuccess(context);
         },
-        (int errorCode, bool isRetry) {
+        (int errorCode) {
           addState(context, const PaymentProcessingEvent(isPaymentProcessing: false));
-          openErrorPageWithCondition(errorCode, context, isRetry);
+          openErrorPageWithCondition(errorCode, context);
         },
     );
 
@@ -131,9 +131,9 @@ void _startProcessing(
     bool sendReceipt,
     BankCard card,
     String? cvv,
-    void Function(Secure3D? secure3d, bool isRetry) on3DS,
+    void Function(Secure3D? secure3d) on3DS,
     void Function() onSuccess,
-    void Function(int errorCode, bool isRetry) onError,
+    void Function(int errorCode) onError,
 ) async {
 
   try {
@@ -167,16 +167,16 @@ void _startProcessing(
     );
 
     if (entryResponse == null || entryResponse.errorCode() != 0) {
-      onError(entryResponse?.errorCode() ?? ErrorsCode.error_1.code, entryResponse?.isRetry() ?? true);
+      onError(entryResponse?.errorCode() ?? ErrorsCode.error_1.code);
 
     } else if (entryResponse.isSecure3D() == true) {
-      on3DS(entryResponse.secure3D(), entryResponse.isRetry() ?? false);
+      on3DS(entryResponse.secure3D());
 
     } else {
       onSuccess();
     }
   } catch (e) {
-    onError(ErrorsCode.error_1.code, true);
+    onError(ErrorsCode.error_1.code);
   }
 
 }

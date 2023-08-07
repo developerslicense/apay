@@ -18,14 +18,12 @@ class WebViewPage extends StatefulWidget {
 class _WebViewContainerState extends State<WebViewPage> {
   _WebViewContainerState();
   bool _isLoading = true;
-  bool _isRetry = false;
   String? _action;
 
   @override
   Widget build(BuildContext context) {
     final Map<String, String?>? data = ModalRoute.of(context)?.settings.arguments as Map<String, String?>?;
     _action = data?['action'];
-    _isRetry = data?['is_retry'] == 'true' ? true : false;
 
     final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
@@ -66,11 +64,10 @@ class _WebViewContainerState extends State<WebViewPage> {
                         .replaceAll('errorMsg', '')//todo временный костыль на период, пока не будет исправлено на бэке
                     ),
                     context,
-                    _isRetry
                 );
               } catch (e) {
                 LoggerAirba.log('Parsing error: $e');
-                openErrorPageWithCondition(0, context, false);
+                openErrorPageWithCondition(0, context);
               }
             }
 

@@ -80,13 +80,12 @@ class _RepeatPageState extends State<RepeatPage> {
 
     if (mounted) {
       if (response?.isSecure3D() == true) {
-        openWebView(response?.secure3D()?.action, 'true', context);
+        openWebView(response?.secure3D()?.action, context);
 
       } else if(response?.errorCode() != 0 || response == null) {
         openErrorPageWithCondition(
             response?.errorCode(),
-            context,
-            true
+            context
         );
 
       } else {

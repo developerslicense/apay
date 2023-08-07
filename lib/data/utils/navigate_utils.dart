@@ -19,13 +19,12 @@ void backHome(BuildContext context) {
   openHome(context);
 }
 
-void openWebView(String? action, String isRetry, BuildContext context) {
+void openWebView(String? action, BuildContext context) {
   Navigator.pushNamed(
       context,
       routesWebView,
       arguments: {
-        'action': action,
-        'is_retry': isRetry
+        'action': action
       }
   );
 }
@@ -37,7 +36,6 @@ void openRepeat(BuildContext context) {
 void openErrorPageWithCondition(
     int? errorCode,
     BuildContext context,
-    bool isRetry
 ) {
   final ErrorsCode error = ErrorsCode.initByCode(errorCode ?? 1);
 
@@ -65,7 +63,6 @@ void openErrorPageWithCondition(
         routesError,
         arguments: {
           'errorCode': error.code.toString(),
-          'is_retry': isRetry.toString()
         }
     );
   }

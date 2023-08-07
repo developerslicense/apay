@@ -24,10 +24,6 @@ class _ErrorPageState extends State<ErrorPage> {
     final Map<String, String?>? args = ModalRoute.of(context)?.settings.arguments as Map<String, String?>?;
     final ErrorsCode error = ErrorsCode.initByCode(int.parse(args?['errorCode'] ?? '1'));
 
-    if (error.code == 1) {
-      //todo redirect to something wrong
-    }
-
     return WillPopScope(
         onWillPop: () {
           showDialog<void>(
