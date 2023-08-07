@@ -17,7 +17,7 @@ import '../../../../data/utils/card_utils/card_date_utils.dart';
 import '../../../../data/utils/card_utils/card_utils.dart';
 import '../../../../data/utils/number_clearer_utils.dart';
 import '../../../themes/button_style.dart';
-import '../../error/error_util.dart';
+import '../../../../data/utils/navigate_utils.dart';
 
 Positioned initConfirmButton(BuildContext context) {
   return Positioned(
@@ -111,21 +111,11 @@ void _onPressed(BuildContext context) {
         readState(context).cvv,
         (Secure3D? secure3d, bool isRetry) {
           addState(context, const PaymentProcessingEvent(isPaymentProcessing: false));
-          Navigator.pushNamed(
-            context,
-            routesWebView,
-            arguments: {
-              'action': secure3d?.action,
-              'is_retry': isRetry.toString()
-            }
-          );
+          openWebView(secure3d?.action, isRetry.toString(), context);
         },
         () {
           addState(context, const PaymentProcessingEvent(isPaymentProcessing: false));
-          Navigator.pushNamed(
-            context,
-            routesSuccess,
-          );
+          openSuccess(context);
         },
         (int errorCode, bool isRetry) {
           addState(context, const PaymentProcessingEvent(isPaymentProcessing: false));

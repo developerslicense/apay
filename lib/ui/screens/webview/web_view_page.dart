@@ -6,7 +6,7 @@ import '../../../data/constants/routes.dart';
 import '../../../data/utils/logger.dart';
 import '../../ui_components/circular_progress_bar.dart';
 import '../dialogs/dialog_exit.dart';
-import '../error/error_util.dart';
+import '../../../data/utils/navigate_utils.dart';
 
 class WebViewPage extends StatefulWidget {
   const WebViewPage({super.key});
@@ -52,10 +52,7 @@ class _WebViewContainerState extends State<WebViewPage> {
             if (request.url.contains('status=auth')
             || request.url.contains('status=success')) {
               LoggerAirba.log('Status success');
-              Navigator.pushNamed(
-                context,
-                routesSuccess,
-              );
+              openSuccess(context);
 
             } else if (request.url.contains('status=error')) {
               LoggerAirba.log('3D secure status error}');

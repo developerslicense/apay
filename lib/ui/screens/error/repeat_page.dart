@@ -8,7 +8,7 @@ import '../../../data/network/repository/payments_repository.dart';
 import '../../themes/colors.dart';
 import '../../themes/fonts.dart';
 import '../dialogs/dialog_exit.dart';
-import 'error_util.dart';
+import '../../../data/utils/navigate_utils.dart';
 
 class RepeatPage extends StatefulWidget {
   const RepeatPage({super.key});
@@ -80,14 +80,7 @@ class _RepeatPageState extends State<RepeatPage> {
 
     if (mounted) {
       if (response?.isSecure3D() == true) {
-        Navigator.pushNamed(
-            context,
-            routesWebView,
-            arguments: {
-              'action': response?.secure3D()?.action,
-              'is_retry': 'true'
-            }
-        );
+        openWebView(response?.secure3D()?.action, 'true', context);
 
       } else if(response?.errorCode() != 0 || response == null) {
         openErrorPageWithCondition(
@@ -97,12 +90,10 @@ class _RepeatPageState extends State<RepeatPage> {
         );
 
       } else {
-        Navigator.pushNamed(
-            context,
-            routesSuccess
-        );
+        openSuccess(context);
 
       }
     }
   }
+
 }

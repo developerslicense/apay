@@ -1,9 +1,42 @@
+import 'dart:ffi';
+
 import 'package:apay/data/constants/routes.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../data/constants/errors_code.dart';
-import '../../../data/data_holder.dart';
-import '../../../data/utils/string_utils.dart';
+import '../../main.dart';
+import '../constants/errors_code.dart';
+import '../data_holder.dart';
+import 'string_utils.dart';
+
+void openHome(BuildContext context) {
+  Navigator.pushNamed(
+    context,
+    routesHome,
+  );
+}
+
+void backHome(BuildContext context) {
+  Navigator.of(context).popUntil((route) => route.isFirst);
+
+  if (isDebugForSdkDeveloper) { // иначе первым будет InitBeforeHomePage
+    openHome(context);
+  }
+}
+
+void openWebView(String? action, String isRetry, BuildContext context) {
+  Navigator.pushNamed(
+      context,
+      routesWebView,
+      arguments: {
+        'action': action,
+        'is_retry': isRetry
+      }
+  );
+}
+
+void openRepeat(BuildContext context) {
+  Navigator.pushNamed(context, routesRepeat);
+}
 
 void openErrorPageWithCondition(
     int? errorCode,
@@ -40,4 +73,11 @@ void openErrorPageWithCondition(
         }
     );
   }
+}
+
+void openSuccess(BuildContext context) {
+  Navigator.pushNamed(
+      context,
+      routesSuccess
+  );
 }

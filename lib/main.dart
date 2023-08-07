@@ -23,11 +23,11 @@ import 'data/constants/routes.dart';
 
 /// Когда нужно проверить либу во время разработки, то true.
 /// Без этого не произойдут нужные инициализации
-var _isDebugForSdkDeveloper = false;
+var isDebugForSdkDeveloper = false;
 
 void main() async {
 
-  if (_isDebugForSdkDeveloper) {
+  if (isDebugForSdkDeveloper) {
     runApp(const TestSdkApp());
 
   } else {

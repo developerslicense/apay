@@ -1,3 +1,4 @@
+import 'package:apay/data/utils/navigate_utils.dart';
 import 'package:apay/ui/themes/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -109,9 +110,6 @@ class AirbaPaySdk {
       ColorsSdk.colorBrandMain = colorBrandMain;
     }
 
-    Navigator.pushNamed(
-      context,
-      routesHome,
-    );
+    openHome(context);
   }
 }
