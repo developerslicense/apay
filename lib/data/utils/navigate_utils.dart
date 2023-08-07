@@ -16,11 +16,7 @@ void openHome(BuildContext context) {
 }
 
 void backHome(BuildContext context) {
-  Navigator.of(context).popUntil((route) => route.isFirst);
-
-  if (isDebugForSdkDeveloper) { // иначе первым будет InitBeforeHomePage
-    openHome(context);
-  }
+  openHome(context);
 }
 
 void openWebView(String? action, String isRetry, BuildContext context) {
