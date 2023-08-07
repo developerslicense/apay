@@ -47,13 +47,13 @@ void openErrorPageWithCondition(
         routesErrorSomethingWrong
     );
 
-  } else if (errorCode == ErrorsCode.error_5020.code || errorCode == null) {
+  } else if (error.code == ErrorsCode.error_5020.code || errorCode == null) {
     Navigator.pushNamed(
       context,
       routesErrorFinal,
     );
 
-  } else if (errorCode == ErrorsCode.error_5999.code && !isBlank(DataHolder.bankName ?? "")) {
+  } else if (error.code == ErrorsCode.error_5999.code && !isBlank(DataHolder.bankName ?? "")) {
     Navigator.pushNamed(
       context,
       routesErrorWithInstruction
@@ -64,7 +64,7 @@ void openErrorPageWithCondition(
         context,
         routesError,
         arguments: {
-          'errorCode': errorCode.toString(),
+          'errorCode': error.code.toString(),
           'is_retry': isRetry.toString()
         }
     );
