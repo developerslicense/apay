@@ -3,6 +3,19 @@ import '../utils/base_strings.dart';
 // эти исключения из-за того, что в enum используются
 const String tryAgainRu = 'Попробовать снова';
 const String tryAgainKz = 'Қайтадан байқап көріңіз';
+
+const String payAnotherCardRu = 'Оплатить другой картой';
+const String payAnotherCardKz = 'Басқа картамен төлеңіз';
+
+const String goToMarketRu = 'Вернуться в магазин';
+const String goToMarketKz = 'Дүкенге оралу';
+
+const String limitExceededRu = 'Превышен лимит \nпо карте';
+const String limitExceededKz = 'Карта шегінен \nасып кетті';
+
+const String tryPayAnotherCardRu = 'Попробуйте оплатить другой картой';
+const String tryPayAnotherCardKz = 'Басқа картамен төлеуге тырысыңыз';
+
 const String kzt = '₸';
 
 String paymentOfPurchase() {
@@ -93,7 +106,7 @@ String paySuccess() {
 }
 
 String goToMarker() {
-  return getStrFromRes('Вернуться в магазин', 'Дүкенге оралу');
+  return getStrFromRes(goToMarketRu, goToMarketKz);
 }
 
 String dropPaymentDescription() {
@@ -130,4 +143,12 @@ String somethingWentWrong() {
 
 String somethingWentWrongDescription() {
   return getStrFromRes('Обратитесь в службу поддержки магазина', 'Дүкен қолдау қызметіне хабарласыңыз');
+}
+
+String orPayWithCard() {
+  return getStrFromRes("или оплатите картой", "немесе картамен төлеңіз");
+}
+
+String payAnotherCard() {
+  return getStrFromRes(payAnotherCardRu, payAnotherCardKz);
 }
