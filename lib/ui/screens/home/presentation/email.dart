@@ -6,11 +6,14 @@ import 'package:apay/ui/screens/home/presentation/utils/text_field_decorator.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../data/data_holder.dart';
 import '../../../../data/utils/string_utils.dart';
 import '../../../themes/colors.dart';
 import '../../../themes/fonts.dart';
 import '../bloc/home_event.dart';
 import '../bloc/home_state.dart';
+
+bool _isFirstInit = true;
 
 class EmailEditTextWidget extends StatelessWidget {
   const EmailEditTextWidget({required this.focusNode, super.key});
@@ -19,7 +22,14 @@ class EmailEditTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController(text: readState(context).email);
+    final TextEditingController controller = TextEditingController(
+        text: _isFirstInit ? DataHolder.userEmail : readState(context).email
+    );
+
+    if (_isFirstInit) {
+      _isFirstInit = false;
+      addState(context, EmailDataEvent(email: DataHolder.userEmail));
+    }
 
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
