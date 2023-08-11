@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../data/constants/strings.dart';
@@ -8,6 +9,8 @@ import '../../../themes/colors.dart';
 import '../../../themes/fonts.dart';
 import '../../../ui_components/bottom_sheet_header.dart';
 import '../../../ui_components/circular_progress_bar.dart';
+import '../start_processing_bloc/start_processing_bloc.dart';
+import '../start_processing_bottom_sheet.dart';
 import 'init_amount.dart';
 import 'init_button_next.dart';
 import 'init_card.dart';
@@ -22,6 +25,34 @@ Widget buildPageStartProcessing({
     required bool isErrorState,
     Color backgroundColor = ColorsSdk.bgBlock
 }) {
+
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+
+    if(isLoading) {
+      onStartProcessing(
+          onSuccess: (List<BankCard>? cards) {
+            actionOnLoadingCompleted();
+            /* context.read<StartProcessingBloc>().add(
+              ChangedStartProcessingEvent(
+                  isAuthenticated: context.read<StartProcessingBloc>().state.isAuthenticated,
+                  savedCards: cards,
+                  isLoaded: isLoading//false
+              )
+          );*/
+          },
+          onError: () {
+            actionOnLoadingCompleted();
+            /* context.read<StartProcessingBloc>().add(
+              ChangedStartProcessingEvent(
+                  isErrorState: true,
+                  isLoaded: isLoading //false
+              )
+          );*/
+          }
+      );
+    }
+  });
+
   return Stack(children: [
         Column(children: [
           if (isBottomSheetType)
@@ -29,7 +60,7 @@ Widget buildPageStartProcessing({
                 title: paymentByCard(),
                 actionClose: () => {Navigator.of(context).pop()}),
           if (isErrorState) _initErrorState(context),
-          if (!isErrorState) _initSuccessState(isAuthenticated)
+          if (!isErrorState) _initSuccessState(context, isAuthenticated)
         ]),
         isLoading
             ? const Positioned(
@@ -44,9 +75,10 @@ Widget buildPageStartProcessing({
 
 Widget _initSuccessState(
     // List<BankCard> savedCards,
+    BuildContext context,
     bool isAuthenticated,
 ) {
-  List<BankCard> savedCards = List.empty(); //todo
+  List<BankCard> savedCards = context.read<StartProcessingBloc>().state.savedCards ?? [];
 
   return Column(children: [
         initViewStartProcessingAmount(DataHolder.purchaseAmountFormatted),

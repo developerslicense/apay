@@ -17,38 +17,11 @@ class StartProcessingBottomSheet extends StatefulWidget {
 }
 
 class _StartProcessingBottomSheet extends State<StartProcessingBottomSheet> {
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      print("WidgetsBinding aaaaaaaaa==========");
-      // context.read<StartProcessingBloc>().add(const ChangedStartProcessingEvent());
-
-      _onStart(
-        onSuccess: (List<BankCard>? cards) {
-          context.read<StartProcessingBloc>().add(
-              ChangedStartProcessingEvent(
-                  isAuthenticated: context.read<StartProcessingBloc>().state.isAuthenticated,
-                  savedCards: cards,
-                  isLoaded: false
-              )
-          );
-        },
-        onError: () {
-          context.read<StartProcessingBloc>().add(
-              const ChangedStartProcessingEvent(
-                isErrorState: true,
-                isLoaded: false
-              )
-          );
-        }
-      );
-    });
-  }
+  var _isLoading = true;
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (BuildContext context) => StartProcessingBloc(),
       child: Builder(
@@ -56,16 +29,22 @@ class _StartProcessingBottomSheet extends State<StartProcessingBottomSheet> {
                 context: context,
                 isBottomSheetType: true,
                 isAuthenticated: context.read<StartProcessingBloc>().state.isAuthenticated,
-                isLoading: context.read<StartProcessingBloc>().state.isLoading,
+                isLoading: _isLoading,
                 isErrorState: context.read<StartProcessingBloc>().state.isErrorState,
-                actionOnLoadingCompleted: () {}, //todo
+                actionOnLoadingCompleted: () {
+                  if(_isLoading) {
+                    setState(() {
+                      _isLoading = false;
+                    });
+                  }
+                },
               )),
     );
   }
 }
 
 
-void _onStart({
+void onStartProcessing({
   required void Function(List<BankCard>?) onSuccess,
   required void Function() onError,
 }) async {

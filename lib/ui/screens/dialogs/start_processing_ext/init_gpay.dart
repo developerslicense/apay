@@ -1,4 +1,3 @@
-import 'package:apay/ui/themes/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,3 +18,4 @@ Widget initViewStartProcessingGPay() {
               child:
                   SvgPicture.asset('assets/images/g_pay.svg', height: 24.0)))
   );
+}
