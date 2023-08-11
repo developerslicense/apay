@@ -15,6 +15,7 @@ Widget initViewStartProcessingAmount(String? purchaseAmount) {
           child: Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(amountOfPurchase(),
                       style: Fonts.regular(),
