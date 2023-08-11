@@ -77,7 +77,11 @@ class Api {
 
       if(result.data != null) {
         LoggerAirba.log('NetworkResponse.success:');
-        return NetworkResponse.success(result.data);
+        if(result.data is List<dynamic>) {
+          return NetworkResponse.successList(result.data);
+        } else {
+          return NetworkResponse.success(result.data);
+        }
 
       } else {
         LoggerAirba.log('NetworkResponse.error: Data is null');

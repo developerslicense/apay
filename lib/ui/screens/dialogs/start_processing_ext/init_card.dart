@@ -9,10 +9,9 @@ import 'init_pay_with_new_card.dart';
 
 Widget initViewStartProcessingCards({
   required List<BankCard> savedCards,
-  required BankCard? selectedCard,
+  required int selected,
+  required void Function(int) actionClickCard,
 }) {
-
-  int selected = 0;
 
   return Column(
     children: [
@@ -25,38 +24,43 @@ Widget initViewStartProcessingCards({
             isSelected: selected == 0,
             isFirst: true,
             clickOnCard: () {
-              selected = 0;
-              selectedCard = savedCards[0];
+              actionClickCard(0);
             }
         ),
       if(savedCards.length > 1)
         _initCard(
             card: savedCards[1],
             isSelected: selected == 1,
-            isFirst: true,
+            isFirst: false,
             clickOnCard: () {
-              selected = 1;
-              selectedCard = savedCards[1];
+              actionClickCard(1);
             }
         ),
       if(savedCards.length > 2)
         _initCard(
             card: savedCards[2],
             isSelected: selected == 2,
-            isFirst: true,
+            isFirst: false,
             clickOnCard: () {
-              selected = 2;
-              selectedCard = savedCards[2];
+              actionClickCard(2);
             }
         ),
       if(savedCards.length > 3)
         _initCard(
             card: savedCards[3],
             isSelected: selected == 3,
-            isFirst: true,
+            isFirst: false,
             clickOnCard: () {
-              selected = 3;
-              selectedCard = savedCards[3];
+              actionClickCard(3);
+            }
+        ),
+      if(savedCards.length > 4)
+        _initCard(
+            card: savedCards[4],
+            isSelected: selected == 4,
+            isFirst: false,
+            clickOnCard: () {
+              actionClickCard(4);
             }
         ),
 
@@ -92,18 +96,19 @@ Widget _initCard({
         const SizedBox(height: 16,),
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
-          child: Row(children: [
-              SvgPicture.asset('assets/images/visa.svg', height: 24.0), //todo
-              const SizedBox(width: 16,),
-              Text(card.getMaskedPanCleared()),
-              /*Row(
-                children: [
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    SvgPicture.asset(card.getTypeIcon(), height: 24.0),
+                    const SizedBox(width: 16,),
+                    Text(card.getMaskedPanCleared()),
+                  ],
+                ),
 
-                ],
-              ),*/
-
-              if(isSelected) SvgPicture.asset('assets/images/ic_radio_button_on.svg', height: 24.0),
-              if(!isSelected) SvgPicture.asset('assets/images/ic_radio_button_off.svg', height: 24.0)
+                if(isSelected) SvgPicture.asset('assets/images/ic_radio_button_on.svg', height: 24.0),
+                if(!isSelected) SvgPicture.asset('assets/images/ic_radio_button_off.svg', height: 24.0)
 
           ])
         ),
@@ -113,32 +118,3 @@ Widget _initCard({
   );
 
 }
-/*
-
-
-Row(
-modifier = Modifier
-    .padding(horizontal = 16.dp)
-    .fillMaxWidth(),
-horizontalArrangement = Arrangement.SpaceBetween,
-verticalAlignment = Alignment.CenterVertically
-) {
-Row(
-verticalAlignment = Alignment.CenterVertically
-) {
-LoadImageSrc(imageSrc = card.typeIcon)
-
-Spacer(modifier = Modifier.width(16.dp))
-
-Text(
-style = LocalFonts.current.semiBold,
-text = card.getMaskedPanCleared()
-)
-}
-
-LoadImageSrc(
-imageSrc = if (isSelected) R.drawable.ic_radio_button_on else R.drawable.ic_radio_button_off,
-)
-}
-
-}*/

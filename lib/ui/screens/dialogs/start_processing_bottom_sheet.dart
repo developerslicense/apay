@@ -17,6 +17,8 @@ class StartProcessingBottomSheet extends StatefulWidget {
 
 class _StartProcessingBottomSheet extends State<StartProcessingBottomSheet> {
   var _isLoading = true;
+  var _selected = 0;
+  List<BankCard>? _savedCards;
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +31,17 @@ class _StartProcessingBottomSheet extends State<StartProcessingBottomSheet> {
                 isBottomSheetType: true,
                 isLoading: _isLoading,
                 isErrorState: context.read<StartProcessingBloc>().state.isErrorState,
-                actionOnLoadingCompleted: () {
+                selected: _selected,
+                savedCards: _savedCards,
+                actionClickCard: (selected) {
+                  setState(() {
+                    _selected = selected;
+                  });
+                },
+                actionOnLoadingCompleted: (cards) {
                   if(_isLoading) {
                     setState(() {
+                      _savedCards = cards;
                       _isLoading = false;
                     });
                   }
@@ -56,7 +66,6 @@ void onStartProcessing({
         accessToken: null);
 
     CardsGetResponse? response = await getCards(phone: DataHolder.userPhone);
-
     onSuccess(response?.getCards());
     /*savedCards = response?.getCards() ?? List.empty();
     actionOnLoadingCompleted()

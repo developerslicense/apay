@@ -18,19 +18,22 @@ import 'init_gpay.dart';
 
 Widget buildPageStartProcessing({
     required BuildContext context,
-    required void Function() actionOnLoadingCompleted,
+    required void Function(List<BankCard>?) actionOnLoadingCompleted,
+    required void Function(int) actionClickCard,
     required bool isBottomSheetType,
     required bool isLoading,
     required bool isErrorState,
-    Color backgroundColor = ColorsSdk.bgBlock
+    required int selected,
+    Color backgroundColor = ColorsSdk.bgBlock,
+    List<BankCard>? savedCards
 }) {
 
   WidgetsBinding.instance.addPostFrameCallback((_) {
 
     if(isLoading) {
       onStartProcessing(
-          onSuccess: (List<BankCard>? cards) {
-            actionOnLoadingCompleted();
+          onSuccess: (cards) {
+            actionOnLoadingCompleted(cards);
             /* context.read<StartProcessingBloc>().add(
               ChangedStartProcessingEvent(
                   isAuthenticated: context.read<StartProcessingBloc>().state.isAuthenticated,
@@ -40,7 +43,7 @@ Widget buildPageStartProcessing({
           );*/
           },
           onError: () {
-            actionOnLoadingCompleted();
+            actionOnLoadingCompleted(null);
             /* context.read<StartProcessingBloc>().add(
               ChangedStartProcessingEvent(
                   isErrorState: true,
@@ -59,7 +62,7 @@ Widget buildPageStartProcessing({
                 title: paymentByCard(),
                 actionClose: () => {Navigator.of(context).pop()}),
           if (isErrorState) _initErrorState(context),
-          if (!isErrorState) _initSuccessState(context)
+          if (!isErrorState) _initSuccessState(savedCards ?? [], actionClickCard, selected, context)
         ]),
         isLoading
             ? const Positioned(
@@ -73,21 +76,19 @@ Widget buildPageStartProcessing({
 }
 
 Widget _initSuccessState(
-    // List<BankCard> savedCards,
+    List<BankCard> savedCards,
+    void Function(int) actionClickCard,
+    int selected,
     BuildContext context,
 ) {
-  List<BankCard> savedCards = [
-    BankCard(maskedPan: '4111********11111', type: 'VISA', accountId: 'sd'),
-    BankCard(maskedPan: '4111********11112', type: 'AE', accountId: 'qw'),
-  ];
-
   return Column(children: [
         initViewStartProcessingAmount(DataHolder.purchaseAmountFormatted),
         initViewStartProcessingGPay(),
         if (savedCards.isNotEmpty && DataHolder.isAuthenticated)
           initViewStartProcessingCards(
               savedCards: savedCards,
-              selectedCard: null //todo
+              selected: selected,
+              actionClickCard: actionClickCard
           ),
         initViewStartProcessingButtonNext(
             savedCards: savedCards,

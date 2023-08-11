@@ -13,7 +13,7 @@ Widget initViewStartProcessingButtonNext({
   required BankCard? selectedCard}) {
 
   return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 32),
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 32, bottom: 32),
       child: TextButton(
         style: buildButtonStyle(),
           onPressed: () {

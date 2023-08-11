@@ -13,7 +13,7 @@ class CardsGetResponse extends NetworkResponse {
   List<BankCard> getCards() {
     List<BankCard> cards = [];
 
-    for (var element in data?.values ?? []) {
+    for (var element in dataList ?? []) {
       cards.add(BankCard.fromJson(element));
     }
 
@@ -21,7 +21,7 @@ class CardsGetResponse extends NetworkResponse {
   }
 
   CardsGetResponse(NetworkResponse? response) {
-    data = response?.data;
+    dataList = response?.dataList;
   }
 }
 
@@ -34,7 +34,6 @@ class BankCard { // используется для всех случаев. н�
   String? id;
   String? type;
   String? issuer;
-  String? typeIcon;
 
   BankCard({
     this.pan,
@@ -44,8 +43,7 @@ class BankCard { // используется для всех случаев. н�
     this.id,
     this.accountId,
     this.type,
-    this.maskedPan,
-    this.typeIcon,
+    this.maskedPan
   });
 
   factory BankCard.fromJson(dynamic json) => BankCard(
@@ -57,23 +55,22 @@ class BankCard { // используется для всех случаев. н�
       maskedPan: json['masked_pan'] ?? '',
       id: json['id'] ?? '',
       type: json['type'] ?? '',
-      typeIcon: _initTypeIcon(json)
   );
 
   String getMaskedPanCleared() {
     try {
-      return maskedPan?.substring(maskedPan?.length ?? 0, 6) ?? '';
+      return maskedPan?.substring((maskedPan?.length ?? 0) - 6) ?? '';
     } catch (e) {
       return '';
     }
   }
-}
 
-String _initTypeIcon(dynamic json) {
-  switch (json['type'] ?? '') {
-    case "VISA": return CardType.visa.icon;
-    case "MC": return CardType.masterCard.icon;
-    case "AE": return CardType.americanExpress.icon;
-    default: return CardType.maestro.icon;
+  String getTypeIcon() {
+    switch (type) {
+      case "VISA": return CardType.visa.icon;
+      case "MC": return CardType.masterCard.icon;
+      case "AE": return CardType.americanExpress.icon;
+      default: return CardType.maestro.icon;
+    }
   }
 }
