@@ -34,7 +34,7 @@ dependencies:
   simple_logger: ^1.9.0+2
   webview_flutter: ^4.2.2
   video_player: ^2.7.0
-
+  local_auth: ^2.1.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -85,6 +85,10 @@ flutter:
     - assets/images/pay_success.svg
     - assets/images/pay_failed.svg
     - assets/images/something_wrong.svg
+    - assets/images/ic_add.svg
+    - assets/images/g_pay.svg
+    - assets/images/ic_radio_button_off.svg
+    - assets/images/ic_radio_button_on.svg
 
   # https://flutter.dev/custom-fonts/#from-packages
   fonts:

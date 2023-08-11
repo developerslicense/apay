@@ -18,6 +18,10 @@ const String tryPayAnotherCardKz = 'Басқа картамен төлеуге �
 
 const String kzt = '₸';
 
+String paymentByCard() { return getStrFromRes('Оплата картой', 'Карточка арқылы төлеу'); }
+String paymentByCard2() { return getStrFromRes('Оплатить картой', 'Картамен төлеу'); }
+
+
 String paymentOfPurchase() {
   return getStrFromRes('Оплата покупки', 'Сатып алу төлемі');
 }
@@ -146,7 +150,7 @@ String somethingWentWrongDescription() {
 }
 
 String orPayWithCard() {
-  return getStrFromRes("или оплатите картой", "немесе картамен төлеңіз");
+  return getStrFromRes('или оплатите картой', 'немесе картамен төлеңіз');
 }
 
 String payAnotherCard() {

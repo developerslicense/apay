@@ -21,12 +21,14 @@ class DataHolder {
   static String userPhone = '';
   static String password = '';
   static String terminalId  = '';
-  static String failureBackUrl = '';
+  static String failureBackUrl = 'https://site.kz/failure';
   static String failureCallback = '';
-  static String successBackUrl = '';
+  static String successBackUrl = 'https://site.kz/success';
   static String successCallback = '';
   static String currentLang = AirbaPaySdkLang.ru.lang;
 
   static List<Goods>? goods;
   static List<SettlementPayment>? settlementPayments;
+
+  static String purchaseAmountFormatted = '';
 }

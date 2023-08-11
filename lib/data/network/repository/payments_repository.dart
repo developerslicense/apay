@@ -11,7 +11,6 @@ import '../api.dart';
 // https://sps.airbapay.kz/acquiring-api/sdk/swagger/index.html#/
 
 Future<PaymentCreateResponse?> createPayment({
-  required String? accessToken,
   required bool saveCard
 
 }) async {
@@ -36,7 +35,7 @@ Future<PaymentCreateResponse?> createPayment({
 
     NetworkResponse? response = await api.apiCall(
       url: '/api/v1/payments',
-      accessToken: accessToken,
+      accessToken: DataHolder.accessToken,
       requestType: RequestType.POST,
       params: {
         "account_id": DataHolder.userPhone,
@@ -71,15 +70,13 @@ Future<PaymentCreateResponse?> createPayment({
   return null;
 }
 
-Future<PaymentInfoResponse?> getPaymentInfo({
-  required String? accessToken
-}) async {
+Future<PaymentInfoResponse?> getPaymentInfo() async {
   Api api = Api();
 
   try {
     NetworkResponse? response = await api.apiCall(
       url: '/api/v1/payments',
-      accessToken: accessToken,
+      accessToken: DataHolder.accessToken,
       requestType: RequestType.GET
     );
     return PaymentInfoResponse(response);
@@ -91,7 +88,6 @@ Future<PaymentInfoResponse?> getPaymentInfo({
 }
 
 Future<PaymentEntryResponse?> paymentAccountEntry({ //проводка платежа
-  required String? accessToken,
   required bool saveCard,
   required bool sendReceipt,
   required BankCard card,
@@ -102,7 +98,7 @@ Future<PaymentEntryResponse?> paymentAccountEntry({ //проводка плат�
   try {
     NetworkResponse? response = await api.apiCall(
       url: '/api/v1/payments',
-      accessToken: accessToken,
+      accessToken: DataHolder.accessToken,
       requestType: RequestType.PUT,
       params: {
         "card": {
@@ -125,15 +121,14 @@ Future<PaymentEntryResponse?> paymentAccountEntry({ //проводка плат�
   return null;
 }
 
-Future<PaymentEntryResponse?> paymentAccountEntryRetry({// проводка платежа без ввода данных карты
-  required String? accessToken
-}) async {
+Future<PaymentEntryResponse?> paymentAccountEntryRetry(// проводка платежа без ввода данных карты
+) async {
   Api api = Api();
 
   try {
     NetworkResponse? response = await api.apiCall(
       url: '/api/v1/payments/retry',
-      accessToken: accessToken,
+      accessToken: DataHolder.accessToken,
       requestType: RequestType.PUT
     );
     return PaymentEntryResponse(response);

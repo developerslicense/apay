@@ -14,7 +14,6 @@ Future<AuthResponse?> auth({
   required String password,
   required String terminalId,
   required String? accessToken
-
 }) async {
   Api api = Api();
 

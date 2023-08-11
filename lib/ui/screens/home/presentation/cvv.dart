@@ -3,6 +3,7 @@ import 'package:apay/ui/screens/home/bloc/home_bloc.dart';
 import 'package:apay/ui/screens/home/presentation/utils/edit_text_box_decoration.dart';
 import 'package:apay/ui/screens/home/presentation/utils/read_state.dart';
 import 'package:apay/ui/screens/home/presentation/utils/text_field_decorator.dart';
+import 'package:apay/ui/ui_components/bottom_sheet_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -92,33 +93,11 @@ class CVVEditTextWidget extends StatelessWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 11, bottom: 16),
-                        child: SvgPicture.asset('assets/images/line_gray.svg')
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Padding(
-                              padding: EdgeInsets.only(top: 6, bottom: 6, right: 40),
-                          ),
-                          Text(
-                              cvv(),
-                              style: Fonts.subtitleBold(),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 6, bottom: 6, right: 16),
-                              child: SvgPicture.asset('assets/images/cancel.svg')
-                          ))
-                        ],
-                      ),
-                      const Divider(
-                        height: 1,
-                        color: ColorsSdk.gray10,
+                      initHeader(
+                          title: cvv(),
+                          actionClose: () => {
+                            Navigator.of(context).pop()
+                          }
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 22, bottom: 32, right: 16, left: 16),

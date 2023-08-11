@@ -8,16 +8,13 @@ import '../api.dart';
 
 // https://sps.airbapay.kz/acquiring-api/sdk/swagger/index.html#/
 
-Future<CardAddResponse?> cardAdd({
-  required String? accessToken
-
-}) async {
+Future<CardAddResponse?> cardAdd() async {
   Api api = Api();
 
   try {
     NetworkResponse? response = await api.apiCall(
       url: '/api/v1/cards',
-      accessToken: accessToken,
+      accessToken: DataHolder.accessToken,
       requestType: RequestType.POST,
       params: {
         'language': DataHolder.currentLang,
@@ -40,8 +37,6 @@ Future<CardAddResponse?> cardAdd({
 
 Future<CardsGetResponse?> getCards({
   required String phone,
-  required String? accessToken
-
 }) async {
   Api api = Api();
 
@@ -49,7 +44,7 @@ Future<CardsGetResponse?> getCards({
     NetworkResponse? response = await api.apiCall(
         url: '/api/v1/cards/$phone',
         requestType: RequestType.GET,
-        accessToken: accessToken
+        accessToken: DataHolder.accessToken
     );
     return CardsGetResponse(response);
 
@@ -61,8 +56,6 @@ Future<CardsGetResponse?> getCards({
 
 Future<NetworkResponse?> deleteCard({
   required String cardId,
-  required String? accessToken
-
 }) async {
   Api api = Api();
 
@@ -70,7 +63,7 @@ Future<NetworkResponse?> deleteCard({
     NetworkResponse? response = await api.apiCall(
         url: '/api/v1/cards/$cardId',
         requestType: RequestType.DELETE,
-        accessToken: accessToken
+        accessToken: DataHolder.accessToken
     );
     return response;
 

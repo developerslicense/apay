@@ -76,7 +76,7 @@ class _RepeatPageState extends State<RepeatPage> {
   }
 
   void _onStart() async {
-    PaymentEntryResponse? response = await paymentAccountEntryRetry(accessToken: DataHolder.accessToken);
+    PaymentEntryResponse? response = await paymentAccountEntryRetry();
 
     if (mounted) {
       if (response?.isSecure3D() == true) {

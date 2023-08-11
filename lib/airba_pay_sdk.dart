@@ -1,9 +1,9 @@
-import 'package:apay/data/utils/navigate_utils.dart';
+import 'package:apay/ui/screens/dialogs/start_processing_bottom_sheet.dart';
 import 'package:apay/ui/themes/colors.dart';
 import 'package:flutter/material.dart';
 
-import 'data/constants/routes.dart';
 import 'data/data_holder.dart';
+import 'data/utils/airba_pay_biometric.dart';
 import 'data/utils/money_utlis.dart';
 
 enum AirbaPaySdkLang {
@@ -50,26 +50,15 @@ class Goods {
 
 class AirbaPaySdk {
 
-  static void startProcessing({
-    required BuildContext context,
+  static void initOnCreate({
     required bool isProd,
-    required int purchaseAmount,
     required String phone,
-    required String orderNumber,
-    required String invoiceId,
     required String shopId,
     required String password,
     required String terminalId,
-    required String failureBackUrl,
     required String failureCallback,
-    required String successBackUrl,
     required String successCallback,
-    required List<Goods> goods,
-    required List<SettlementPayment>? settlementPayment,
     String? userEmail,
-    int connectTimeout = 60,
-    int receiveTimeout = 60,
-    int sendTimeout = 60,
     AirbaPaySdkLang lang = AirbaPaySdkLang.ru,
     Color? colorBrandMain,
     Color? colorBrandInversion,
@@ -82,23 +71,12 @@ class AirbaPaySdk {
     DataHolder.userPhone = phone;
     DataHolder.userEmail = userEmail;
 
-    DataHolder.failureBackUrl = failureBackUrl;
     DataHolder.failureCallback = failureCallback;
-    DataHolder.successBackUrl = successBackUrl;
     DataHolder.successCallback = successCallback;
 
-    DataHolder.sendTimeout = sendTimeout;
-    DataHolder.connectTimeout = connectTimeout;
-    DataHolder.receiveTimeout = receiveTimeout;
     DataHolder.shopId = shopId;
     DataHolder.password = password;
     DataHolder.terminalId = terminalId;
-    DataHolder.purchaseAmount = Money(purchaseAmount).getFormatted();
-    DataHolder.orderNumber = orderNumber;
-    DataHolder.invoiceId = invoiceId;
-
-    DataHolder.goods = goods;
-    DataHolder.settlementPayments = settlementPayment;
 
     DataHolder.currentLang = lang.lang;
 
@@ -109,6 +87,46 @@ class AirbaPaySdk {
     if(colorBrandMain != null) {
       ColorsSdk.colorBrandMain = colorBrandMain;
     }
+  }
+
+  static void initProcessing({
+    required int purchaseAmount,
+    required String invoiceId,
+    required String orderNumber,
+    required List<Goods> goods,
+    required List<SettlementPayment>? settlementPayments
+  }) {
+    DataHolder.purchaseAmount = purchaseAmount.toString();
+    DataHolder.orderNumber = orderNumber;
+    DataHolder.invoiceId = invoiceId;
+    DataHolder.goods = goods;
+    DataHolder.settlementPayments = settlementPayments;
+
+    DataHolder.purchaseAmountFormatted = Money(purchaseAmount).getFormatted();
+  }
+}
+
+void airbaPaySdkProcessingBottomSheet({
+  required BuildContext context
+}) {
+  var airbaPayBiometric = AirbaPayBiometric();
+
+  return airbaPayBiometric.authenticate(
+    context: context,
+    onSuccess: (){
+      showModalBottomSheet(
+          backgroundColor: ColorsSdk.bgBlock,
+          context: context,
+          builder: (context) {
+        return const StartProcessingBottomSheet();
+      });
+    },
+  );
+}
+
+
+//todo !!!!!
+// todo !!!!!
 
     openHome(context);
   }

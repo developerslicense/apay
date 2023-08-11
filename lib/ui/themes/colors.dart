@@ -16,6 +16,7 @@ class ColorsSdk {
   static const Color textLight = Color(0xFF787E9E);
   static const Color textSecondary = Color(0xFF383E61);
   static const Color textInversion = Color(0xFFFCFCFD);
+  static const Color textBlue = Color(0xFF319CF3);
 
   // icons
   static const Color iconMain = Color(0xFF10142D);

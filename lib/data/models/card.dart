@@ -56,4 +56,11 @@ class BankCard { // используется для всех случаев. н�
       type: json['type'] ?? '',
   );
 
+  String getMaskedPanCleared() {
+    try {
+      return maskedPan?.substring(maskedPan?.length ?? 0, 6) ?? '';
+    } catch (e) {
+      return '';
+    }
+  }
 }

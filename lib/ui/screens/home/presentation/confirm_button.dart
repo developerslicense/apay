@@ -147,19 +147,16 @@ void _startProcessing(
 
     PaymentCreateResponse? result = await createPayment(
       saveCard: saveCard,
-      accessToken: accessToken,
-      //todo логика насчет сохранненой карты
     );
 
-    AuthResponse? authResponseAfter = await auth(
+    await auth(
         paymentId: result?.id(),
         user: DataHolder.shopId,
         password: DataHolder.password,
         terminalId: DataHolder.terminalId,
-        accessToken: accessToken);
+        accessToken: DataHolder.accessToken);
 
     PaymentEntryResponse? entryResponse = await paymentAccountEntry(
-      accessToken: authResponseAfter?.getAccessToken(),
       saveCard: saveCard,
       sendReceipt: sendReceipt,
       card: card,
