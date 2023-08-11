@@ -1,3 +1,4 @@
+import '../utils/card_utils/card_type.dart';
 import 'base_network_response.dart';
 
 class CardAddResponse extends NetworkResponse {
@@ -33,6 +34,7 @@ class BankCard { // используется для всех случаев. н�
   String? id;
   String? type;
   String? issuer;
+  String? typeIcon;
 
   BankCard({
     this.pan,
@@ -43,6 +45,7 @@ class BankCard { // используется для всех случаев. н�
     this.accountId,
     this.type,
     this.maskedPan,
+    this.typeIcon,
   });
 
   factory BankCard.fromJson(dynamic json) => BankCard(
@@ -54,6 +57,7 @@ class BankCard { // используется для всех случаев. н�
       maskedPan: json['masked_pan'] ?? '',
       id: json['id'] ?? '',
       type: json['type'] ?? '',
+      typeIcon: _initTypeIcon(json)
   );
 
   String getMaskedPanCleared() {
@@ -62,5 +66,14 @@ class BankCard { // используется для всех случаев. н�
     } catch (e) {
       return '';
     }
+  }
+}
+
+String _initTypeIcon(dynamic json) {
+  switch (json['type'] ?? '') {
+    case "VISA": return CardType.visa.icon;
+    case "MC": return CardType.masterCard.icon;
+    case "AE": return CardType.americanExpress.icon;
+    default: return CardType.maestro.icon;
   }
 }

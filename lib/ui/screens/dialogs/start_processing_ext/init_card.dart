@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -20,20 +19,47 @@ Widget initViewStartProcessingCards({
       const SizedBox(height: 32),
       Text(orPayWithCard(), style: Fonts.regular()),
       const SizedBox(height: 16),
-      ListView.builder(
-          itemCount: savedCards.length,
-          itemBuilder: (context, index) {
-            var card = savedCards[index];
-            return _initCard(
-              card: card,
-              isSelected: selected == index,
-              isFirst: index == 0,
-              clickOnCard: () {
-                  selected = index;
-                  selectedCard = card;
-                }
-            );
-          }),
+      if(savedCards.isNotEmpty)//todo это костыль вместо ListView т.к. проблемы есть с рендерингом
+        _initCard(
+            card: savedCards[0],
+            isSelected: selected == 0,
+            isFirst: true,
+            clickOnCard: () {
+              selected = 0;
+              selectedCard = savedCards[0];
+            }
+        ),
+      if(savedCards.length > 1)
+        _initCard(
+            card: savedCards[1],
+            isSelected: selected == 1,
+            isFirst: true,
+            clickOnCard: () {
+              selected = 1;
+              selectedCard = savedCards[1];
+            }
+        ),
+      if(savedCards.length > 2)
+        _initCard(
+            card: savedCards[2],
+            isSelected: selected == 2,
+            isFirst: true,
+            clickOnCard: () {
+              selected = 2;
+              selectedCard = savedCards[2];
+            }
+        ),
+      if(savedCards.length > 3)
+        _initCard(
+            card: savedCards[3],
+            isSelected: selected == 3,
+            isFirst: true,
+            clickOnCard: () {
+              selected = 3;
+              selectedCard = savedCards[3];
+            }
+        ),
+
       const SizedBox(height: 32),
       initViewStartProcessingPayWithNewCard(
         actionClick: (){

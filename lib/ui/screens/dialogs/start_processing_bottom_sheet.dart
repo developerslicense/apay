@@ -1,5 +1,4 @@
 import 'package:apay/ui/screens/dialogs/start_processing_bloc/start_processing_bloc.dart';
-import 'package:apay/ui/screens/dialogs/start_processing_bloc/start_processing_event.dart';
 import 'package:apay/ui/screens/dialogs/start_processing_ext/init_base.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +27,6 @@ class _StartProcessingBottomSheet extends State<StartProcessingBottomSheet> {
           builder: (context) => buildPageStartProcessing(
                 context: context,
                 isBottomSheetType: true,
-                isAuthenticated: context.read<StartProcessingBloc>().state.isAuthenticated,
                 isLoading: _isLoading,
                 isErrorState: context.read<StartProcessingBloc>().state.isErrorState,
                 actionOnLoadingCompleted: () {

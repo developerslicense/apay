@@ -21,7 +21,6 @@ Widget buildPageStartProcessing({
     required void Function() actionOnLoadingCompleted,
     required bool isBottomSheetType,
     required bool isLoading,
-    required bool isAuthenticated,
     required bool isErrorState,
     Color backgroundColor = ColorsSdk.bgBlock
 }) {
@@ -60,7 +59,7 @@ Widget buildPageStartProcessing({
                 title: paymentByCard(),
                 actionClose: () => {Navigator.of(context).pop()}),
           if (isErrorState) _initErrorState(context),
-          if (!isErrorState) _initSuccessState(context, isAuthenticated)
+          if (!isErrorState) _initSuccessState(context)
         ]),
         isLoading
             ? const Positioned(
@@ -76,14 +75,16 @@ Widget buildPageStartProcessing({
 Widget _initSuccessState(
     // List<BankCard> savedCards,
     BuildContext context,
-    bool isAuthenticated,
 ) {
-  List<BankCard> savedCards = context.read<StartProcessingBloc>().state.savedCards ?? [];
+  List<BankCard> savedCards = [
+    BankCard(maskedPan: '4111********11111', type: 'VISA', accountId: 'sd'),
+    BankCard(maskedPan: '4111********11112', type: 'AE', accountId: 'qw'),
+  ];
 
   return Column(children: [
         initViewStartProcessingAmount(DataHolder.purchaseAmountFormatted),
         initViewStartProcessingGPay(),
-        if (savedCards.isNotEmpty && isAuthenticated)
+        if (savedCards.isNotEmpty && DataHolder.isAuthenticated)
           initViewStartProcessingCards(
               savedCards: savedCards,
               selectedCard: null //todo
@@ -91,7 +92,7 @@ Widget _initSuccessState(
         initViewStartProcessingButtonNext(
             savedCards: savedCards,
             purchaseAmount: DataHolder.purchaseAmountFormatted,
-            isAuthenticated: isAuthenticated,
+            isAuthenticated: DataHolder.isAuthenticated,
             selectedCard: savedCards.firstOrNull)
       ]);
 }

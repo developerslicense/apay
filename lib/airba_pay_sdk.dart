@@ -96,6 +96,8 @@ class AirbaPaySdk {
     required List<Goods> goods,
     required List<SettlementPayment>? settlementPayments
   }) {
+    DataHolder.isAuthenticated = false;
+
     DataHolder.purchaseAmount = purchaseAmount.toString();
     DataHolder.orderNumber = orderNumber;
     DataHolder.invoiceId = invoiceId;
@@ -115,6 +117,8 @@ void airbaPaySdkProcessingBottomSheet({
     context: context,
     onSuccess: (){
       showModalBottomSheet(
+          isScrollControlled: true,
+          useSafeArea: true,
           backgroundColor: ColorsSdk.bgBlock,
           context: context,
           builder: (context) {

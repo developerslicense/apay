@@ -31,4 +31,6 @@ class DataHolder {
   static List<SettlementPayment>? settlementPayments;
 
   static String purchaseAmountFormatted = '';
+
+  static bool isAuthenticated = false;
 }
