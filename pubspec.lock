@@ -262,14 +262,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.15"
-  flutter_screen_lock:
-    dependency: "direct main"
-    description:
-      name: flutter_screen_lock
-      sha256: "1d86191e67f8c2f09349c2d2929b6d019db213f012d577ad3b85935d22b13207"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.0.1"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -472,14 +464,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  native_auth:
-    dependency: "direct main"
-    description:
-      name: native_auth
-      sha256: eac0a878059148da9b497c738920eca78763d3de2c195c8ed96eb93baefac803
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.6"
   nested:
     dependency: transitive
     description:
