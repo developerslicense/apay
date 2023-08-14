@@ -7,22 +7,26 @@ import '../../../themes/colors.dart';
 
 Widget initViewStartProcessingPayWithNewCard(
     {required void Function() actionClick}) {
-  return Container(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+  return GestureDetector(
+          onTap: (){
+            actionClick();
+      },
       child: Container(
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-          decoration: BoxDecoration(
-            border: Border.all(color: ColorsSdk.gray10),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Column(children: [
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset('assets/images/ic_add.svg', height: 8.0),
-                  const SizedBox(width: 12),
-                  Text(payAnotherCard(), style: Fonts.semiBold().copyWith(color: ColorsSdk.textBlue))
-                ])
-          ])));
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+          child: Container(
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+              decoration: BoxDecoration(
+                border: Border.all(color: ColorsSdk.gray10),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Column(children: [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset('assets/images/ic_add.svg', height: 8.0),
+                      const SizedBox(width: 12),
+                      Text(payAnotherCard(), style: Fonts.semiBold().copyWith(color: ColorsSdk.textBlue))
+                    ])
+              ]))));
 
 }

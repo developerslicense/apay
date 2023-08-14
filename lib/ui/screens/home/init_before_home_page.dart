@@ -12,9 +12,7 @@ class InitBeforeHomePage extends StatefulWidget {
 }
 
 class _InitBeforeHomePageState extends State<InitBeforeHomePage> {
-  final _isBottomSheet = true;
   var _isSdkInitialised = false;
-  var _isLoading = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +21,9 @@ class _InitBeforeHomePageState extends State<InitBeforeHomePage> {
       _onCreate();
     }
 
-    if (_isBottomSheet) {
-      return  Container(
-          color: ColorsSdk.bgBlock,
-            child: Column(
-
+    return Container(
+        color: ColorsSdk.bgBlock,
+        child: Column(
               children: [
                 AppBar(title: const Text('Оплата заказа', style: TextStyle(fontSize: 16))),
                 const SizedBox(height: 100,),
@@ -47,40 +43,6 @@ class _InitBeforeHomePageState extends State<InitBeforeHomePage> {
               ],
           )
       );
-    } else {
-      _initProcessing();
-
-      return Container(
-          color: ColorsSdk.bgBlock,
-          child: Stack(
-              children: [
-                Column(
-                  children: [
-                    AppBar(title: const Text('Оплата заказа', style: TextStyle(fontSize: 16))),
-                    const SizedBox(height: 10),
-                    airbaPaySdkProcessingView(
-                      context: context,
-                      backgroundColor: const Color(0xFFFFFFFF),
-                      actionOnLoadingCompleted: () {
-                        _isLoading = false;
-                      }
-                    )
-                  ],
-                ),
-                _isLoading ? const Positioned(
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF319CF3)),
-                      ),
-                    )) : const SizedBox()
-
-        ])
-      );
-    }
   }
 
   void _onCreate() {

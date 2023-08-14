@@ -9,7 +9,7 @@ class AirbaPayBiometric {
 
   Future<void> authenticate({
     required BuildContext context,
-    required void Function() onResult
+    required void Function() onResult,
   }) async {
 
     final LocalAuthentication auth = LocalAuthentication();
@@ -22,6 +22,7 @@ class AirbaPayBiometric {
         final didAuthenticate = await localAuth.authenticate(
             localizedReason: requestAccessToSavedCards()
         );
+
         DataHolder.isAuthenticated = didAuthenticate;
         onResult();
       }

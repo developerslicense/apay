@@ -1,3 +1,4 @@
+import 'package:apay/data/utils/navigate_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -8,6 +9,7 @@ import '../../../themes/fonts.dart';
 import 'init_pay_with_new_card.dart';
 
 Widget initViewStartProcessingCards({
+  required BuildContext context,
   required List<BankCard> savedCards,
   required int selected,
   required void Function(int) actionClickCard,
@@ -67,9 +69,7 @@ Widget initViewStartProcessingCards({
       const SizedBox(height: 32),
       initViewStartProcessingPayWithNewCard(
         actionClick: (){
-          // actionClose()
-          // val intent = Intent(context, AirbaPayActivity::class.java)
-          // context.startActivity(intent)
+          openHome(context);
         }
       )
     ],

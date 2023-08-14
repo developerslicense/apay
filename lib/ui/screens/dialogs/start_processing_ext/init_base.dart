@@ -1,16 +1,16 @@
+import 'package:apay/data/utils/navigate_utils.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../data/constants/strings.dart';
 import '../../../../data/data_holder.dart';
 import '../../../../data/models/card.dart';
+import '../../../../data/network/repository/auth_repository.dart';
+import '../../../../data/network/repository/card_repository.dart';
 import '../../../themes/colors.dart';
 import '../../../themes/fonts.dart';
 import '../../../ui_components/bottom_sheet_header.dart';
 import '../../../ui_components/circular_progress_bar.dart';
-import '../start_processing_bloc/start_processing_bloc.dart';
-import '../start_processing_bottom_sheet.dart';
 import 'init_amount.dart';
 import 'init_button_next.dart';
 import 'init_card.dart';
@@ -31,25 +31,12 @@ Widget buildPageStartProcessing({
   WidgetsBinding.instance.addPostFrameCallback((_) {
 
     if(isLoading) {
-      onStartProcessing(
+      _onStartProcessing(
           onSuccess: (cards) {
             actionOnLoadingCompleted(cards);
-            /* context.read<StartProcessingBloc>().add(
-              ChangedStartProcessingEvent(
-                  isAuthenticated: context.read<StartProcessingBloc>().state.isAuthenticated,
-                  savedCards: cards,
-                  isLoaded: isLoading//false
-              )
-          );*/
           },
           onError: () {
             actionOnLoadingCompleted(null);
-            /* context.read<StartProcessingBloc>().add(
-              ChangedStartProcessingEvent(
-                  isErrorState: true,
-                  isLoaded: isLoading //false
-              )
-          );*/
           }
       );
     }
@@ -86,11 +73,13 @@ Widget _initSuccessState(
         initViewStartProcessingGPay(),
         if (savedCards.isNotEmpty && DataHolder.isAuthenticated)
           initViewStartProcessingCards(
+              context: context,
               savedCards: savedCards,
               selected: selected,
               actionClickCard: actionClickCard
           ),
         initViewStartProcessingButtonNext(
+            context: context,
             savedCards: savedCards,
             purchaseAmount: DataHolder.purchaseAmountFormatted,
             isAuthenticated: DataHolder.isAuthenticated,
@@ -126,4 +115,31 @@ Widget _initErrorState(
           ))
     ],
   );
+}
+
+void _onStartProcessing({
+  required void Function(List<BankCard>?) onSuccess,
+  required void Function() onError,
+}) async {
+
+  try {
+    await auth(
+        paymentId: null,
+        user: DataHolder.shopId,
+        password: DataHolder.password,
+        terminalId: DataHolder.terminalId,
+        accessToken: null);
+
+    CardsGetResponse? response = await getCards(phone: DataHolder.userPhone);
+    onSuccess(response?.getCards());
+    /*savedCards = response?.getCards() ?? List.empty();
+    actionOnLoadingCompleted()
+
+    if (savedCards.isNotEmpty) {
+      selectedCard = savedCards[0];
+    }*/
+  } catch (e) {
+    onError();
+    // actionOnLoadingCompleted();
+  }
 }

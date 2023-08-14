@@ -124,14 +124,6 @@ void airbaPaySdkProcessingBottomSheet({
           builder: (context) {
         return const StartProcessingBottomSheet();
       });
-    },
+    }
   );
-}
-
-
-//todo !!!!!
-// todo !!!!!
-
-    openHome(context);
-  }
 }

@@ -137,13 +137,6 @@ void _startProcessing(
 ) async {
 
   try {
-    AuthResponse? authResponseBeforeCreate = await auth(
-        paymentId: null,
-        user: DataHolder.shopId,
-        password: DataHolder.password,
-        terminalId: DataHolder.terminalId,
-        accessToken: null);
-    String? accessToken = authResponseBeforeCreate?.getAccessToken();
 
     PaymentCreateResponse? result = await createPayment(
       saveCard: saveCard,

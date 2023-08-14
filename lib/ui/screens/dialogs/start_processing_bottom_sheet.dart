@@ -3,10 +3,7 @@ import 'package:apay/ui/screens/dialogs/start_processing_ext/init_base.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/data_holder.dart';
 import '../../../data/models/card.dart';
-import '../../../data/network/repository/auth_repository.dart';
-import '../../../data/network/repository/card_repository.dart';
 
 class StartProcessingBottomSheet extends StatefulWidget {
   const StartProcessingBottomSheet({super.key});
@@ -48,33 +45,5 @@ class _StartProcessingBottomSheet extends State<StartProcessingBottomSheet> {
                 },
               )),
     );
-  }
-}
-
-
-void onStartProcessing({
-  required void Function(List<BankCard>?) onSuccess,
-  required void Function() onError,
-}) async {
-
-  try {
-    await auth(
-        paymentId: null,
-        user: DataHolder.shopId,
-        password: DataHolder.password,
-        terminalId: DataHolder.terminalId,
-        accessToken: null);
-
-    CardsGetResponse? response = await getCards(phone: DataHolder.userPhone);
-    onSuccess(response?.getCards());
-    /*savedCards = response?.getCards() ?? List.empty();
-    actionOnLoadingCompleted()
-
-    if (savedCards.isNotEmpty) {
-      selectedCard = savedCards[0];
-    }*/
-  } catch (e) {
-    onError();
-    // actionOnLoadingCompleted();
   }
 }

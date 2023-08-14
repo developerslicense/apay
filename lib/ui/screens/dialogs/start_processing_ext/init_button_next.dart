@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../data/constants/strings.dart';
 import '../../../../data/models/card.dart';
+import '../../../../data/utils/navigate_utils.dart';
 import '../../../themes/fonts.dart';
 
 Widget initViewStartProcessingButtonNext({
+  required BuildContext context,
   required List<BankCard> savedCards,
   required String? purchaseAmount,
   required bool isAuthenticated,
@@ -27,7 +29,10 @@ Widget initViewStartProcessingButtonNext({
                 intent.putExtra(ARG_CARD_PAN, selectedCard.value?.maskedPan)
                 intent.putExtra(ARG_CARD_EXPIRE, selectedCard.value?.expiredForResponse)
                 context.startActivity(intent)*/
+              openHome(context);
+
             } else {
+              openHome(context);
               /*val intent = Intent(context, AirbaPayActivity::class.java)
                 context.startActivity(intent)*/
             }
