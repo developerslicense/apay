@@ -156,3 +156,31 @@ String orPayWithCard() {
 String payAnotherCard() {
   return getStrFromRes(payAnotherCardRu, payAnotherCardKz);
 }
+
+String accessToCardRestricted() {
+  return getStrFromRes(
+    "Доступ к сохраненным картам отменен",
+    "Сақталған карталарға кіруден бас тартылды"
+  );
+}
+
+String requestAccessToSavedCards() {
+  return getStrFromRes(
+    "Запрос доступа к сохраненным картам",
+    "Сақталған карталарға рұқсат сұрау"
+  );
+}
+
+String authenticateFingerprint() {
+  return getStrFromRes(
+    "Отсканируйте отпечаток пальца",
+    "Саусақ ізін сканерлеңіз"
+  );
+}
+
+String textCancel() {
+  return getStrFromRes(
+    "Отменить",
+    "Бас тарту"
+  );
+}
