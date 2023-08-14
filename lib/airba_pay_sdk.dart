@@ -113,9 +113,9 @@ void airbaPaySdkProcessingBottomSheet({
 }) {
   var airbaPayBiometric = AirbaPayBiometric();
 
-  return airbaPayBiometric.authenticate(
+  airbaPayBiometric.authenticate(
     context: context,
-    onSuccess: (){
+    onResult: (){
       showModalBottomSheet(
           isScrollControlled: true,
           useSafeArea: true,
