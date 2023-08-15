@@ -32,7 +32,7 @@ Positioned initConfirmButton(BuildContext context) {
               },
               style: buildButtonStyle(),
               child: Text(
-                '${payAmount()} ${DataHolder.purchaseAmount}',
+                '${payAmount()} ${DataHolder.purchaseAmountFormatted}',
                 style: buildButtonTextStyle(),
               ))));
 }

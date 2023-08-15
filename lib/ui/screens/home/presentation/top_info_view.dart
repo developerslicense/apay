@@ -38,7 +38,7 @@ class TopInfoWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: _initRow(
                       textStart: amountOfPurchase(),
-                      textEnd: DataHolder.purchaseAmount),
+                      textEnd: DataHolder.purchaseAmountFormatted),
                 ),
                 const SizedBox(height: 8.0),
                 Row(
