@@ -1,6 +1,7 @@
 import 'package:apay/data/utils/navigate_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
+import 'dart:io' show Platform;
 
 import '../../../../data/constants/strings.dart';
 import '../../../../data/data_holder.dart';
@@ -70,7 +71,8 @@ Widget _initSuccessState(
 ) {
   return Column(children: [
         initViewStartProcessingAmount(DataHolder.purchaseAmountFormatted),
-        initViewStartProcessingGPay(),
+        if(Platform.isIOS) initViewStartProcessingAPay(),
+        if(Platform.isAndroid) initViewStartProcessingGPay(),
         if (savedCards.isNotEmpty && DataHolder.isAuthenticated)
           initViewStartProcessingCards(
               context: context,

@@ -84,6 +84,7 @@ flutter:
     - assets/images/pay_failed.png
     - assets/images/something_wrong.svg
     - assets/images/ic_add.svg
+    - assets/images/a_pay.svg
     - assets/images/g_pay.svg
     - assets/images/ic_radio_button_off.svg
     - assets/images/ic_radio_button_on.svg
