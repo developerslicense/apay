@@ -10,7 +10,7 @@ Widget initErrorInfoField(String? message, {double leftPadding = 16}) {
     children: [
       Padding(
           padding: EdgeInsets.only(left: leftPadding, top: 6, right: 6),
-          child: SvgPicture.asset('assets/images/Alarm.svg')),
+          child: SvgPicture.asset('assets/images/alarm.svg')),
       Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: Text(

@@ -14,17 +14,17 @@ class HomeBottomImages extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(
-                  'assets/images/MasterCard.svg',
+                  'assets/images/master_card.svg',
                   height: 32.0
               ),
               const SizedBox(width: 16.0),
               SvgPicture.asset(
-                  'assets/images/Visa.svg',
+                  'assets/images/visa.svg',
                   height: 32.0
               ),
               const SizedBox(width: 16.0),
               SvgPicture.asset(
-                  'assets/images/AmericanExpress.svg',
+                  'assets/images/american_express.svg',
                   height: 32.0
               ),
             ],

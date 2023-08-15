@@ -74,7 +74,7 @@ class CVVEditTextWidget extends StatelessWidget {
                         },
                         child: Padding(
                             padding: const EdgeInsets.only(top: 13, bottom: 13, right: 10),
-                            child: SvgPicture.asset('assets/images/Hint.svg')
+                            child: SvgPicture.asset('assets/images/hint.svg')
                         )),
                 )));
   }

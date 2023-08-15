@@ -43,8 +43,8 @@ InputDecoration inputTextFieldDecoration({
 Padding _initPaymentsSystemIcon(String paySystemIcon) {
   Widget asset = SvgPicture.asset(paySystemIcon);
 
-  if (paySystemIcon.contains('union-pay.svg')
-      || paySystemIcon.contains('maestro-card.svg')) {
+  if (paySystemIcon.contains('union_pay.svg')
+      || paySystemIcon.contains('maestro_card.svg')) {
     asset = SvgPicture.asset(paySystemIcon, height: 16, width: 16);
   }
 

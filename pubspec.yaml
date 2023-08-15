@@ -70,17 +70,17 @@ flutter:
     # https://flutter.dev/assets-and-images/#from-packages
     - assets/images/sportmasters.svg
     - assets/images/airba_pay.svg
-    - assets/images/MasterCard.svg
-    - assets/images/Visa.svg
-    - assets/images/AmericanExpress.svg
-    - assets/images/Hint.svg
+    - assets/images/master_card.svg
+    - assets/images/visa.svg
+    - assets/images/american_express.svg
+    - assets/images/hint.svg
     - assets/images/ic_close.svg
     - assets/images/line_gray.svg
     - assets/images/cancel.svg
-    - assets/images/Alarm.svg
+    - assets/images/alarm.svg
     - assets/images/mir.svg
-    - assets/images/union-pay.svg
-    - assets/images/maestro-card.svg
+    - assets/images/union_pay.svg
+    - assets/images/maestro_card.svg
     - assets/images/warning_red_oval.svg
     - assets/images/pay_success.svg
     - assets/images/pay_failed.svg
@@ -89,6 +89,7 @@ flutter:
     - assets/images/g_pay.svg
     - assets/images/ic_radio_button_off.svg
     - assets/images/ic_radio_button_on.svg
+    - assets/images/pci_express_black.svg
 
   # https://flutter.dev/custom-fonts/#from-packages
   fonts:
