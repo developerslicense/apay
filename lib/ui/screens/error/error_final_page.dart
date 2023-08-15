@@ -22,12 +22,7 @@ class _ErrorFinalPageState extends State<ErrorFinalPage> {
     double iconPaddingTop = MediaQuery.of(context).size.height * 0.3;
     double iconSize = MediaQuery.of(context).size.width * 0.6;
 
-    return /*WillPopScope(
-        onWillPop: () {
-          exitSdk();
-          return Future.value(false);
-        },
-        child:*/ Scaffold(
+    return Scaffold(
           body: Container(
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
             child: Stack(
@@ -38,8 +33,8 @@ class _ErrorFinalPageState extends State<ErrorFinalPage> {
                     right: 0,
                     child: Column(
                       children: [
-                        SvgPicture.asset(
-                          'assets/images/pay_failed.svg',
+                        Image(
+                          image: const AssetImage('assets/images/pay_failed.png'),
                           height: iconSize,
                           width: iconSize,
                         ),
@@ -62,7 +57,7 @@ class _ErrorFinalPageState extends State<ErrorFinalPage> {
                     bottom: 0,
                     child: TextButton(
                         onPressed: () {
-                          exitSdk();
+                          exitSdk(context);
                         },
                         style: buildButtonStyle(),
                         child: Text(
@@ -71,7 +66,6 @@ class _ErrorFinalPageState extends State<ErrorFinalPage> {
                         ))),
               ],
             ),
-          // ),
         ));
   }
 }

@@ -23,7 +23,7 @@ class _SuccessPageState extends State<SuccessPage> {
 
     return WillPopScope(
         onWillPop: () {
-          exitSdk();
+          exitSdk(context);
           return Future.value(false);
         },
         child: Scaffold(
@@ -37,8 +37,8 @@ class _SuccessPageState extends State<SuccessPage> {
                     right: 0,
                     child: Column(
                       children: [
-                        SvgPicture.asset(
-                          'assets/images/pay_success.svg',
+                        Image(
+                          image: const AssetImage('assets/images/pay_success.png'),
                           height: iconSize,
                           width: iconSize,
                         ),
@@ -55,7 +55,7 @@ class _SuccessPageState extends State<SuccessPage> {
                     bottom: 0,
                     child: TextButton(
                         onPressed: () {
-                          exitSdk();
+                          exitSdk(context);
                         },
                         style: buildButtonStyle(),
                         child: Text(

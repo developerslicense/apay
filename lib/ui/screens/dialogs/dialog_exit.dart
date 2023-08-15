@@ -39,7 +39,7 @@ Widget initDialogExit(BuildContext context) {
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
               child: TextButton(
                   onPressed: () {
-                    exitSdk();
+                    exitSdk(context);
                   },
                   style: buildButtonStyle(isMainBrand: false),
                   child: Text(

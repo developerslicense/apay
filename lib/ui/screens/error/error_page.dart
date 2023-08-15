@@ -43,8 +43,8 @@ class _ErrorPageState extends State<ErrorPage> {
                     right: 0,
                     child: Column(
                       children: [
-                        SvgPicture.asset(
-                          'assets/images/pay_failed.svg',
+                        Image(
+                          image: const AssetImage('assets/images/pay_failed.png'),
                           height: iconSize,
                           width: iconSize,
                         ),

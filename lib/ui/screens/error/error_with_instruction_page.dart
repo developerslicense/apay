@@ -62,7 +62,7 @@ class _ErrorWithInstructionPageState extends State<ErrorWithInstructionPage> {
 
     return WillPopScope(
         onWillPop: () {
-          exitSdk();
+          exitSdk(context);
           return Future.value(false);
         },
         child: Scaffold(
@@ -79,8 +79,8 @@ class _ErrorWithInstructionPageState extends State<ErrorWithInstructionPage> {
                           child: Column(
                             children: [
                               SizedBox(height: iconPaddingTop),
-                              SvgPicture.asset(
-                                'assets/images/pay_failed.svg',
+                              Image(
+                                image: const AssetImage('assets/images/pay_failed.png'),
                                 height: iconSize,
                                 width: iconSize,
                               ),

@@ -82,8 +82,8 @@ flutter:
     - assets/images/union_pay.svg
     - assets/images/maestro_card.svg
     - assets/images/warning_red_oval.svg
-    - assets/images/pay_success.svg
-    - assets/images/pay_failed.svg
+    - assets/images/pay_success.png
+    - assets/images/pay_failed.png
     - assets/images/something_wrong.svg
     - assets/images/ic_add.svg
     - assets/images/g_pay.svg

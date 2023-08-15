@@ -164,7 +164,7 @@ enum ErrorsCode {
       case 5008: { openRepeat(context); }
       case 5009: { openRepeat(context); }
       case 5999: { openRepeat(context); }
-      default: { exitSdk(); }
+      default: { exitSdk(context); }
     }
   }
 
@@ -172,7 +172,7 @@ enum ErrorsCode {
     switch (code) {
       case 5008: { backHome(context); }
       case 5999: { backHome(context); }
-      default: { exitSdk(); }
+      default: { exitSdk(context); }
 
     }
   }

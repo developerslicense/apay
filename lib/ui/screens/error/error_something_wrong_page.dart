@@ -24,7 +24,7 @@ class _ErrorSomethingWrongPageState extends State<ErrorSomethingWrongPage> {
 
     return WillPopScope(
         onWillPop: () {
-          exitSdk();
+          exitSdk(context);
           return Future.value(false);
         },
         child: Scaffold(
@@ -73,7 +73,7 @@ class _ErrorSomethingWrongPageState extends State<ErrorSomethingWrongPage> {
             children: [
               TextButton(
                   onPressed: () {
-                    exitSdk();
+                    exitSdk(context);
                   },
                   style: buildButtonStyle(),
                   child: Text(
