@@ -1,4 +1,4 @@
-import 'package:apay/ui/themes/colors.dart';
+import 'package:apay/ui/resources/colors_sdk.dart';
 import 'package:flutter/material.dart';
 
 class ProgressDialogPrimary extends StatelessWidget {

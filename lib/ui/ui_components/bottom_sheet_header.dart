@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../themes/colors.dart';
-import '../themes/fonts.dart';
+import '../resources/colors_sdk.dart';
+import '../resources/fonts.dart';
 
 Widget initHeader({
   required String title,

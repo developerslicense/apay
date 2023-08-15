@@ -1,12 +1,12 @@
-import 'package:apay/ui/screens/error/error_final_page.dart';
-import 'package:apay/ui/screens/error/error_page.dart';
-import 'package:apay/ui/screens/error/error_something_wrong_page.dart';
-import 'package:apay/ui/screens/error/error_with_instruction_page.dart';
-import 'package:apay/ui/screens/error/repeat_page.dart';
-import 'package:apay/ui/screens/home/home_page.dart';
-import 'package:apay/ui/screens/home/init_before_home_page.dart';
-import 'package:apay/ui/screens/success/success_page.dart';
-import 'package:apay/ui/screens/webview/web_view_page.dart';
+import 'package:apay/ui/pages/error/error_final_page.dart';
+import 'package:apay/ui/pages/error/error_page.dart';
+import 'package:apay/ui/pages/error/error_something_wrong_page.dart';
+import 'package:apay/ui/pages/error/error_with_instruction_page.dart';
+import 'package:apay/ui/pages/error/repeat_page.dart';
+import 'package:apay/ui/pages/home/home_page.dart';
+import 'package:apay/ui/pages/home/init_before_home_page.dart';
+import 'package:apay/ui/pages/success/success_page.dart';
+import 'package:apay/ui/pages/webview/web_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

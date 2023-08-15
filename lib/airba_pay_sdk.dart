@@ -1,5 +1,5 @@
-import 'package:apay/ui/screens/dialogs/start_processing_bottom_sheet.dart';
-import 'package:apay/ui/themes/colors.dart';
+import 'package:apay/ui/pages/dialogs/start_processing_bottom_sheet.dart';
+import 'package:apay/ui/resources/colors_sdk.dart';
 import 'package:flutter/material.dart';
 
 import 'data/data_holder.dart';
