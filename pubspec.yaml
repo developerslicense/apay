@@ -68,8 +68,6 @@ flutter:
   assets:
     # https://flutter.dev/assets-and-images/#resolution-aware
     # https://flutter.dev/assets-and-images/#from-packages
-    - assets/images/sportmasters.svg
-    - assets/images/airba_pay.svg
     - assets/images/master_card.svg
     - assets/images/visa.svg
     - assets/images/american_express.svg

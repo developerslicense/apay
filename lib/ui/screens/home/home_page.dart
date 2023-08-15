@@ -3,7 +3,6 @@ import 'package:apay/ui/screens/home/presentation/cvv.dart';
 import 'package:apay/ui/screens/home/presentation/date_expired.dart';
 import 'package:apay/ui/screens/home/presentation/switcher_send_check_to_email.dart';
 import 'package:apay/ui/screens/home/presentation/swithed_save_card_data.dart';
-import 'package:apay/ui/screens/home/presentation/top_images.dart';
 import 'package:apay/data/constants/strings.dart';
 import 'package:apay/ui/screens/home/presentation/utils/error_info.dart';
 import 'package:apay/ui/screens/home/presentation/utils/read_state.dart';
@@ -88,7 +87,6 @@ class _HomePageState extends State<HomePage> {
         ),
         title: Text(paymentOfPurchase(), style: const TextStyle(color: ColorsSdk.textMain)),
       ),
-      const HomeTopImages(),
       const TopInfoWidget(),
       CardNumberEditTextWidget(
           focusNode: _cardNumberFocusNode,
