@@ -1,3 +1,4 @@
+import 'test_for_card/card_luhn_algoritm_test.dart';
 import 'test_for_data/get_number_cleared_tests.dart';
 import 'test_for_data/get_number_cleared_with_max_size_tests.dart';
 import 'test_for_data/mask_formatter_tests.dart';
@@ -8,4 +9,5 @@ void unitTests() {
   testsGetNumberCleared();
   testInitMoney();
   testMaskFormatter();
+  testLuhnAlgorithm();
 }
